@@ -15,8 +15,15 @@ public class PlayerNetwork : NetworkBehaviour
 
     void Update()
     {
+        UpdateNetwork();
+    }
+
+
+    public void UpdateNetwork()
+    {
         if (IsOwner)
         {
+            Debug.Log(gameObject + "is the owner");
             _netState.Value = new PlayerNetworkData()
             {
                 Position = transform.position,
@@ -27,18 +34,22 @@ public class PlayerNetwork : NetworkBehaviour
         else
         {
             transform.position = Vector3.SmoothDamp(transform.position, _netState.Value.Position, ref _vel, _interpoliationTime);
-            transform.rotation = Quaternion.Euler (
+            transform.rotation = Quaternion.Euler(
                 0,
                 Mathf.SmoothDampAngle(transform.rotation.eulerAngles.y, _netState.Value.Rotation.y, ref _rotVel, _interpoliationTime),
-                0); 
+                0);
         }
     }
+
+
+
+
 
 
     struct PlayerNetworkData: INetworkSerializable
     {
         private float _x, _z;
-        private float _yRot; 
+        private short _yRot; 
 
         internal Vector3 Position
         {
@@ -53,7 +64,7 @@ public class PlayerNetwork : NetworkBehaviour
         internal Vector3 Rotation
         {
             get => new Vector3 (0, _yRot, 0);
-            set => _yRot = value.y;
+            set => _yRot = (short)value.y;
         }
 
         public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter

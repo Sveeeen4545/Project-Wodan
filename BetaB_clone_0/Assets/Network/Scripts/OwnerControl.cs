@@ -6,6 +6,8 @@ using Unity.Netcode;
 public class OwnerControl : NetworkBehaviour
 {
 
+    private bool IsSelected;  
+
     public override void OnNetworkSpawn()
     {
         if (!IsOwner) Destroy(this); 
@@ -13,10 +15,21 @@ public class OwnerControl : NetworkBehaviour
     }
 
 
-
     void Update()
     {
        
+    }
+
+    void OnSelect()
+    {
+        if (IsSelected)
+        {
+            Debug.Log("Already selected");
+            return; 
+        }
+
+        Debug.Log("Newly Selected");
+
     }
 
 }
