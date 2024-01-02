@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 544065726795905273}
   - component: {fileID: 2390900311285635855}
   - component: {fileID: 2639917705402742193}
-  - component: {fileID: 220130595784367903}
   m_Layer: 0
   m_Name: Dropper
   m_TagString: Untagged
@@ -105,15 +104,3 @@ MonoBehaviour:
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
---- !u!114 &220130595784367903
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8973548268434568472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b282aa79fdaa8f4daab8a946cb11ec6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

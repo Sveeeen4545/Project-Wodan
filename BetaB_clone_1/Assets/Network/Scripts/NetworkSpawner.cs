@@ -9,8 +9,6 @@ public class NetworkSpawner : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     public void RequestSpawnServerRpc( Vector3 pos, ServerRpcParams serverRpcParams = default)
     {
-
         Instantiate(networkPrefab, pos, Quaternion.identity).GetComponent<NetworkObject>().Spawn();
-        //Destroy(gameObject);
     }
 }
