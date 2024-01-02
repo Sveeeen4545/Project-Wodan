@@ -1,37 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
-using Unity.Netcode;
+
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class InventoryButton : MonoBehaviour , IPointerDownHandler, IDragHandler
+public class InventoryButton : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
 {
-    [SerializeField] GameObject m_prefab;
+    [SerializeField] private GameObject m_prefab;
+    [SerializeField] private GameObject networkPrefab;
+    
+    private NetworkSpawner m_networkSpawner;
     private GameObject _selected;
     private LayerMask targetLayer;
-
-
-
-    private Vector3 mousePos;
 
     public void Awake()
     {
         targetLayer = LayerMask.GetMask("Surface");
-
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("clicked");
-        mousePos = Input.mousePosition - GetMousePos();
+        Debug.Log("create dropper prefab");
         _selected = Instantiate(m_prefab);
-        _selected.GetComponent<NetworkObject>().Spawn();
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 500, targetLayer))
@@ -42,27 +34,21 @@ public class InventoryButton : MonoBehaviour , IPointerDownHandler, IDragHandler
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        if (_selected != null)
+        {
+            Debug.Log("create network obj");
 
-        //InstantiateServerRpc(m_prefab, GetMousePos());
-    }
 
-    [ServerRpc]
-    private void InstantiateServerRpc(GameObject item, Vector3 pos)
-    {
-        InstantiateClientRpc(item, pos);
-    }
-
-    [ClientRpc]
-    private void InstantiateClientRpc(GameObject item, Vector3 pos)
-    {
-        
-        Instantiate(item, pos, Quaternion.identity);
-
+            GetComponent<NetworkSpawner>().RequestSpawnServerRpc( _selected.transform.position);
+            
+            Destroy(_selected);
+            _selected = null;
+        }
+            
 
     }
 
-
-        private Vector3 GetMousePos()
+    private Vector3 GetMousePos()
     {
         return Camera.main.WorldToScreenPoint(transform.position);
     }

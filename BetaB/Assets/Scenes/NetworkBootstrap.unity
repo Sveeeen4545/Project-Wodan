@@ -893,6 +893,8 @@ GameObject:
   - component: {fileID: 429282457}
   - component: {fileID: 429282456}
   - component: {fileID: 429282455}
+  - component: {fileID: 429282459}
+  - component: {fileID: 429282458}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -932,7 +934,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 150ea9a541a00dc45ab71919116a6b7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_prefab: {fileID: 3206568471319896981, guid: 6f04db0a93f173f4b9dfbc9bc6abeb31,
+  m_prefab: {fileID: 8973548268434568472, guid: 44532a8f6e271d84c9c705b8fcdd0258,
+    type: 3}
+  networkPrefab: {fileID: 3206568471319896981, guid: 6f04db0a93f173f4b9dfbc9bc6abeb31,
     type: 3}
 --- !u!114 &429282456
 MonoBehaviour:
@@ -972,6 +976,40 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 429282453}
   m_CullTransparentMesh: 1
+--- !u!114 &429282458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429282453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 3918032623
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+--- !u!114 &429282459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429282453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b282aa79fdaa8f4daab8a946cb11ec6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  networkPrefab: {fileID: 3206568471319896981, guid: 6f04db0a93f173f4b9dfbc9bc6abeb31,
+    type: 3}
 --- !u!1 &477785827
 GameObject:
   m_ObjectHideFlags: 0
