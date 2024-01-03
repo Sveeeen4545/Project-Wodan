@@ -22,7 +22,7 @@ public class PlayerNetwork : NetworkBehaviour
 
     public override void  OnNetworkSpawn()
     {
-        if (!IsOwner) Destroy(transform.GetComponent<SceneObjDrag>()); 
+        if (!IsOwner) Destroy(transform.GetComponent<SceneObjControl>()); 
     }
 
 

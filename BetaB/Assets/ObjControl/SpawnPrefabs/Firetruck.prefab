@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 488328380969880981}
   - component: {fileID: -8928294853515308924}
   m_Layer: 0
-  m_Name: Car
+  m_Name: Firetruck
   m_TagString: Selectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,7 +34,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1234136068289723648}
+  - {fileID: 8289908787852005601}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6073118829906961425
@@ -145,9 +145,9 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.5765568, y: 1.2056651, z: 4.076202}
-  m_Center: {x: 0.22277182, y: 0.746379, z: 0.3188932}
---- !u!1001 &1633172010322008811
+  m_Size: {x: 1.9301496, y: 2.122733, z: 6.7618504}
+  m_Center: {x: 0.045975447, y: 1.0805357, z: -0.58555126}
+--- !u!1001 &8395014697873815306
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -155,69 +155,69 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5547658007314650791}
     m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: d68d17964ac58334eb3277c23d37ada8,
+    - target: {fileID: -8679921383154817045, guid: 99ff325ae688b4b40a295c9fef348f7a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.22668457
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d68d17964ac58334eb3277c23d37ada8,
+    - target: {fileID: -8679921383154817045, guid: 99ff325ae688b4b40a295c9fef348f7a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.14
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d68d17964ac58334eb3277c23d37ada8,
+    - target: {fileID: -8679921383154817045, guid: 99ff325ae688b4b40a295c9fef348f7a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.219
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d68d17964ac58334eb3277c23d37ada8,
+    - target: {fileID: -8679921383154817045, guid: 99ff325ae688b4b40a295c9fef348f7a,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071067
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d68d17964ac58334eb3277c23d37ada8,
+    - target: {fileID: -8679921383154817045, guid: 99ff325ae688b4b40a295c9fef348f7a,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.7071068
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d68d17964ac58334eb3277c23d37ada8,
+    - target: {fileID: -8679921383154817045, guid: 99ff325ae688b4b40a295c9fef348f7a,
         type: 3}
       propertyPath: m_LocalRotation.y
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d68d17964ac58334eb3277c23d37ada8,
+    - target: {fileID: -8679921383154817045, guid: 99ff325ae688b4b40a295c9fef348f7a,
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d68d17964ac58334eb3277c23d37ada8,
+    - target: {fileID: -8679921383154817045, guid: 99ff325ae688b4b40a295c9fef348f7a,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d68d17964ac58334eb3277c23d37ada8,
+    - target: {fileID: -8679921383154817045, guid: 99ff325ae688b4b40a295c9fef348f7a,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d68d17964ac58334eb3277c23d37ada8,
+    - target: {fileID: -8679921383154817045, guid: 99ff325ae688b4b40a295c9fef348f7a,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: d68d17964ac58334eb3277c23d37ada8,
+    - target: {fileID: 919132149155446097, guid: 99ff325ae688b4b40a295c9fef348f7a,
         type: 3}
       propertyPath: m_Name
-      value: d_Audis4
+      value: d_FireTruck
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d68d17964ac58334eb3277c23d37ada8, type: 3}
---- !u!4 &1234136068289723648 stripped
+  m_SourcePrefab: {fileID: 100100000, guid: 99ff325ae688b4b40a295c9fef348f7a, type: 3}
+--- !u!4 &8289908787852005601 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d68d17964ac58334eb3277c23d37ada8,
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 99ff325ae688b4b40a295c9fef348f7a,
     type: 3}
-  m_PrefabInstance: {fileID: 1633172010322008811}
+  m_PrefabInstance: {fileID: 8395014697873815306}
   m_PrefabAsset: {fileID: 0}
