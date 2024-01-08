@@ -25,12 +25,15 @@ public class InventoryButton : MonoBehaviour, IPointerDownHandler, IDragHandler,
 
     public void OnDrag(PointerEventData eventData)
     {
+        
+
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 500, _targetLayer))
+        if (Physics.Raycast(ray, out hit, 500, _targetLayer) && _selected != null)
         {
             _selected.transform.position = hit.point;
         }
+       
     }
 
     public void OnPointerUp(PointerEventData eventData)
@@ -47,6 +50,14 @@ public class InventoryButton : MonoBehaviour, IPointerDownHandler, IDragHandler,
 
     public void Update()
     {
+        if (Input.GetMouseButtonDown(1) && _selected != null)
+        {
+            _rotating = false;
+            Destroy(_selected);
+            _selected = null;
+            return;
+        }
+
         if (_rotating) 
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -62,6 +73,7 @@ public class InventoryButton : MonoBehaviour, IPointerDownHandler, IDragHandler,
                 Destroy(_selected);
                 _selected = null;
             }
+            
         }
     }
 }
