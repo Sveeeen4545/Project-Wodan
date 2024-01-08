@@ -1,6 +1,7 @@
 
 using UnityEngine;
 using UnityEngine.EventSystems;
+using static UnityEngine.Rendering.DebugUI.Table;
 
 public class InventoryButton : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
 {
@@ -9,6 +10,7 @@ public class InventoryButton : MonoBehaviour, IPointerDownHandler, IDragHandler,
     private NetworkSpawner _networkSpawner;
     private GameObject _selected;
     private LayerMask _targetLayer;
+    private bool _rotating = false; 
 
     public void Awake()
     {
@@ -35,9 +37,31 @@ public class InventoryButton : MonoBehaviour, IPointerDownHandler, IDragHandler,
     {
         if (_selected != null)
         {
-            _networkSpawner.RequestSpawnServerRpc( _selected.transform.position);
-            Destroy(_selected);
-            _selected = null;
+            if (!_rotating)
+            {
+                _rotating = true;
+                return;
+            }
+        }
+    }
+
+    public void Update()
+    {
+        if (_rotating) 
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 500, _targetLayer))
+            {
+                _selected.transform.LookAt(hit.point);
+            }
+            if (Input.GetMouseButtonDown(0))
+            {
+                _rotating = false;
+                _networkSpawner.RequestSpawnServerRpc(_selected.transform.position, _selected.transform.rotation);
+                Destroy(_selected);
+                _selected = null;
+            }
         }
     }
 }
