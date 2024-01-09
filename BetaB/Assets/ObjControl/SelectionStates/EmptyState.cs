@@ -5,30 +5,16 @@ using UnityEngine;
 
 public class EmptyState : StateMachineBehaviour
 {
-
     private SelectionTracker selectionTracker;
-
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
-
-        // Clear selection 
-
         selectionTracker = GameObject.FindGameObjectWithTag("SelectionTracker").GetComponent<SelectionTracker>();
         selectionTracker.SetSelection(null);
-
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        // track mouse && check if clicking relevant object
-
-
-
-
-
-
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -41,16 +27,6 @@ public class EmptyState : StateMachineBehaviour
                     animator.SetInteger("SelectionState", 1);
                 }
             }
-
         }
-
-
     }
-
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        //Set selection 
-
-    }
-
 }

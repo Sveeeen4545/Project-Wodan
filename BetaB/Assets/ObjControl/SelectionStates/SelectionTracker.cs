@@ -18,7 +18,6 @@ public class SelectionTracker : MonoBehaviour
         _selection = newSelection;
     }
 
-
     private void Start()
     {
         animator = GetComponent<Animator>();

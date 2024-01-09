@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Burst.CompilerServices;
 using UnityEngine;
 
-public class DraggingState : StateMachineBehaviour
+public class RotationState : StateMachineBehaviour
 {
     private SelectionTracker selectionTracker;
     private SceneObjControl sceneObjControl;
-    private LayerMask targetLayer; 
+    private LayerMask targetLayer;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -21,7 +20,7 @@ public class DraggingState : StateMachineBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             animator.SetInteger("SelectionState", 1);
-            return; 
+            return;
         }
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -29,7 +28,7 @@ public class DraggingState : StateMachineBehaviour
 
         if (Physics.Raycast(ray, out hit, 500, targetLayer))
         {
-            sceneObjControl.RequestDrag(hit.point);
+            sceneObjControl.RequestRotate(hit.point);
         }
     }
 }
