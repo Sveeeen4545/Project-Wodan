@@ -1043,7 +1043,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5818205129312115537}
         m_TargetAssemblyTypeName: SceneData, Assembly-CSharp
-        m_MethodName: ModifyVictim
+        m_MethodName: testVictimAdd
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

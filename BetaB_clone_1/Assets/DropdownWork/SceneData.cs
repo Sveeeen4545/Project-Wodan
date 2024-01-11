@@ -4,9 +4,12 @@ using UnityEngine;
 using Unity.Netcode;
 using TMPro;
 using Unity.Collections;
+using JetBrains.Annotations;
 
 public class SceneData : NetworkBehaviour
 {
+
+   
 
     ////////////////////////////////////////////////////////////
     //cLient has info on victim: 
@@ -23,36 +26,53 @@ public class SceneData : NetworkBehaviour
 
     [SerializeField] private TextMeshProUGUI _victimCounter;
 
-
+    //"This is victim " + (victimList.Count + 1).ToString()
     void Update()
     {
         //if (IsServer && victimList != null) {networkVictimCount.Value = victimList.Count.ToString(); }
-
         //Debug.Log(victimList.Count);
 
         if (_victimCounter != null && victimList != null){
             _victimCounter.text = victimList.Count.ToString();
-
         }
     }
 
-    public void ModifyVictim()
+    public void testVictimAdd()
     {
-        ModifyVictimServerRPC(60f, "This is victim " + (victimList.Count + 1).ToString(), "Adult", true);
+        //NetworkObject networkObject = new NetworkObject();
+        //NetworkObjectReference networkObjectReference = networkObject;
+
+        AddVictim(
+
+            GetComponent<NetworkObject>().NetworkObjectId,
+            60f,
+            "I am patient 0",
+            "Adult",
+            true
+            );
+    }
+
+    public void AddVictim(ulong location, float prio, string notes, string age, bool hasPulse)
+    {
+        AddVictimServerRPC(location, prio, notes, age, hasPulse);
     }
 
     [ServerRpc(RequireOwnership = false)]
-    private void ModifyVictimServerRPC(float priority, string notes, string age, bool hasPulse, ServerRpcParams serverRpcParams = default)
+    private void AddVictimServerRPC(ulong location, float priority, string notes, string age, bool hasPulse, ServerRpcParams serverRpcParams = default)
     {
-        ModifyVictimClientRPC(priority, notes, age, hasPulse);
-        
+        AddVictimClientRPC(location, priority, notes, age, hasPulse);
     }
 
 
     [ClientRpc]
-    private void ModifyVictimClientRPC(float priority, string notes, string age, bool hasPulse)
+    private void AddVictimClientRPC(ulong location, float priority, string notes, string age, bool hasPulse)
     {
-        Victim new_victim = gameObject.AddComponent<Victim>();
+        //GameObject derp = GetNetworkObject(location.NetworkObjectId).gameObject;
+
+
+        GameObject VictimLocaton = GetNetworkObject(location).gameObject;
+
+        Victim new_victim = VictimLocaton.AddComponent<Victim>();
 
         new_victim.priority = priority;
         new_victim.notes = notes;
@@ -69,8 +89,7 @@ public class SceneData : NetworkBehaviour
 
 public class Victim : MonoBehaviour
 {
-    //public Vector3 Location;
-    //[Range 0f, 100f]
+    
     public float priority;
     public string notes;
     public string age;
@@ -78,12 +97,12 @@ public class Victim : MonoBehaviour
     
 
 
-    public Victim(float _prio, string _notes, string _age, bool _haspulse)
+    public Victim(float priority, string notes, string age, bool haspulse)
     {
-        priority = _prio;
-        notes = _notes;
-        age = _age;
-        hasPulse = _haspulse;
+        this.priority = priority;
+        this.notes = notes;
+        this.age = age;
+        this.hasPulse = haspulse;
     }
 }
 
@@ -91,7 +110,13 @@ public class Victim : MonoBehaviour
 public class Hazzard : MonoBehaviour
 {
     public string type ;
-    public float prio; 
+    public float prio;
 
+
+    public Hazzard(string type, float prio)
+    {
+        this.type = type;
+        this.prio = prio;
+    }
 }
 

@@ -1,54 +1,57 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SelectedState : StateMachineBehaviour
 {
     private SelectionTracker selectionTracker;
     private SceneObjControl sceneObjControl;
 
-    public GameObject canvasPrefab;
+    public GameObject buttonParent;
     public RectTransform uiElementprefab;
   
     private GameObject toolbar;
+    private LayerMask _targetLayer; 
 
-    private bool requestChange; 
+    private bool requestChange;
+
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         requestChange = false;
+
+        _targetLayer = LayerMask.GetMask("Surface");
+
+
         selectionTracker = GameObject.FindGameObjectWithTag("SelectionTracker").GetComponent<SelectionTracker>();
 
         sceneObjControl = selectionTracker.Selection;
 
         toolbar = CanvasHandeler.instance.toolbar;
         toolbar.SetActive(true);
+
+
+
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
         if (requestChange)
         {
             animator.SetInteger("SelectionState", 0);
-            return;
         }
 
         if (Input.GetMouseButtonDown(0))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 500))
+             
+            if(clickedOther())
             {
-                
-
-                if (hit.collider.GetComponent<SceneObjControl>() != sceneObjControl)
-                {
-                    requestChange = true;
-                }
+                requestChange = true;
             }
-        }
 
+        }
         if (sceneObjControl !=null)
         {
             Vector3 screenPos = Camera.main.WorldToScreenPoint(sceneObjControl.transform.position);
@@ -60,4 +63,27 @@ public class SelectedState : StateMachineBehaviour
     {
         CanvasHandeler.instance.toolbar.SetActive(false);
     }
+
+    private bool clickedOther()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+        {
+            return false;
+        }
+
+        if (Physics.Raycast(ray, out hit, 500))
+        {
+            if (hit.collider.GetComponent<SceneObjControl>() == sceneObjControl)
+            {
+                return false;
+            }
+
+        }
+
+        return true;
+    }
+
 }
