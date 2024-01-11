@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
 public class VictimPlacementState : StateMachineBehaviour
@@ -41,6 +42,16 @@ public class VictimPlacementState : StateMachineBehaviour
                     {
 
                         Debug.Log("add victim to this object");
+                        CanvasHandeler.instance.sceneData.AddVictim(
+                            hit.collider.gameObject.GetComponent<NetworkObject>().NetworkObjectId,
+                            60f,
+                            "This victim was succesfully created by yaboi",
+                            "its so old cuz it took so long",
+                            false
+
+
+                            );
+                        //hit.collider.gameObject;
                     }
                     else
                     {

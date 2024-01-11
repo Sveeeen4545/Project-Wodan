@@ -5,6 +5,7 @@ using UnityEngine;
 public class CanvasHandeler : MonoBehaviour
 {
     public static CanvasHandeler instance;
+    
 
 
     private void Awake()
@@ -14,4 +15,5 @@ public class CanvasHandeler : MonoBehaviour
     }
 
     public GameObject toolbar;
+    public SceneData sceneData;
 }
