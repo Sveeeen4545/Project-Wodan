@@ -46,31 +46,31 @@ public class SceneData : NetworkBehaviour
 
             GetComponent<NetworkObject>().NetworkObjectId,
             60f,
-            "I am patient 0",
+            "I am patient " + victimList.Count.ToString(),
             "Adult",
             true
             );
     }
 
-    public void AddVictim(ulong location, float prio, string notes, string age, bool hasPulse)
+    public void AddVictim(ulong objectid, float prio, string notes, string age, bool hasPulse)
     {
-        AddVictimServerRPC(location, prio, notes, age, hasPulse);
+        AddVictimServerRPC(objectid, prio, notes, age, hasPulse);
     }
 
     [ServerRpc(RequireOwnership = false)]
-    private void AddVictimServerRPC(ulong location, float priority, string notes, string age, bool hasPulse, ServerRpcParams serverRpcParams = default)
+    private void AddVictimServerRPC(ulong objectid, float priority, string notes, string age, bool hasPulse, ServerRpcParams serverRpcParams = default)
     {
-        AddVictimClientRPC(location, priority, notes, age, hasPulse);
+        AddVictimClientRPC(objectid, priority, notes, age, hasPulse);
     }
 
 
     [ClientRpc]
-    private void AddVictimClientRPC(ulong location, float priority, string notes, string age, bool hasPulse)
+    private void AddVictimClientRPC(ulong objectid, float priority, string notes, string age, bool hasPulse)
     {
         //GameObject derp = GetNetworkObject(location.NetworkObjectId).gameObject;
 
 
-        GameObject VictimLocaton = GetNetworkObject(location).gameObject;
+        GameObject VictimLocaton = GetNetworkObject(objectid).gameObject;
 
         Victim new_victim = VictimLocaton.AddComponent<Victim>();
 

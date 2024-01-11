@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SelectionTracker : MonoBehaviour
 {
+
+    public GameObject dropperPrefab; 
     private SceneObjControl _selection;
 
     private Animator animator;
