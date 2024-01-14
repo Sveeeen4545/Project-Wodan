@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 
-public class VictimPlacementState : StateMachineBehaviour
+public class HazardPlacementState : StateMachineBehaviour
 {
 
     private SceneObjControl dropper;
@@ -18,7 +18,7 @@ public class VictimPlacementState : StateMachineBehaviour
         selectionTracker = GameObject.FindGameObjectWithTag("SelectionTracker").GetComponent<SelectionTracker>();
         _targetLayer = LayerMask.GetMask("Surface");
 
-         dropper = Instantiate(selectionTracker.dropperPrefab).GetComponent<SceneObjControl>();
+        dropper = Instantiate(selectionTracker.dropperPrefab).GetComponent<SceneObjControl>();
 
         selectionTracker.SetSelection(dropper);
     }
@@ -38,35 +38,33 @@ public class VictimPlacementState : StateMachineBehaviour
                 if (Physics.Raycast(ray, out hit, 500))
                 {
 
-                    if(hit.collider.GetComponent<SceneObjControl>() != null)
+                    if (hit.collider.GetComponent<SceneObjControl>() != null)
                     {
 
-                    Debug.Log("add victim to this object");
-                    CanvasHandeler.instance.sceneData.AddVictim(
+                    Debug.Log("add Hazard to this object");
+                    CanvasHandeler.instance.sceneData.AddHazard(
                         hit.collider.gameObject.GetComponent<NetworkObject>().NetworkObjectId,
                         60f,
-                        "This victim was succesfully created by yaboi",
-                        "its so old cuz it took so long",
-                        false
+                        "Fire!"
                         );
                     }
                     else
                     {
-                        Debug.Log("spawn new object and add victim to that object");
-                        spawner.GetComponent<NetworkSpawner>().RequestSpawnServerRpc(hit.point, Quaternion.identity, NetworkSpawner.spawnTypes.Victim);
+                        Debug.Log("spawn new object and add Hazard to that object");
+                        spawner.GetComponent<NetworkSpawner>().RequestSpawnServerRpc(hit.point, Quaternion.identity, NetworkSpawner.spawnTypes.Hazard);
                     }
                 }
                 Destroy(selectionTracker.Selection.gameObject);
                 selectionTracker.SetState(0);
             }
         }
-        
+
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
+
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

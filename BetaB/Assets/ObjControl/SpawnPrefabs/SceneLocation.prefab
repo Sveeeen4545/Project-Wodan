@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 9153952255608760489}
   - component: {fileID: 7314826587433616979}
   m_Layer: 0
-  m_Name: VictimLocation
+  m_Name: SceneLocation
   m_TagString: Selectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

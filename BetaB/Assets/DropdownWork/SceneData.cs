@@ -8,48 +8,22 @@ using JetBrains.Annotations;
 
 public class SceneData : NetworkBehaviour
 {
-
-   
-
-    ////////////////////////////////////////////////////////////
-    //cLient has info on victim: 
-    //Make server request with struct variables
-    // Server makes structed victims
-
-    // UPDATE VICTIM COUNTER 
-    // RETRIEVE VICTIM LIST ON CLICK 
-
-    /// CLASS VICTIMS THAT CONTAINTS LIST VICTIMS 
-    /////////////////////////////////////////////////////////
-
-    [SerializeField] private List<Victim> victimList;
+    public List<Victim> victimList;
+    public List<Hazard> hazardList;
 
     [SerializeField] private TextMeshProUGUI _victimCounter;
+    [SerializeField] private TextMeshProUGUI _hazardCounter;
 
-    //"This is victim " + (victimList.Count + 1).ToString()
     void Update()
     {
-        //if (IsServer && victimList != null) {networkVictimCount.Value = victimList.Count.ToString(); }
-        //Debug.Log(victimList.Count);
-
         if (_victimCounter != null && victimList != null){
             _victimCounter.text = victimList.Count.ToString();
         }
-    }
 
-    public void testVictimAdd()
-    {
-        //NetworkObject networkObject = new NetworkObject();
-        //NetworkObjectReference networkObjectReference = networkObject;
-
-        AddVictim(
-
-            GetComponent<NetworkObject>().NetworkObjectId,
-            60f,
-            "I am patient " + victimList.Count.ToString(),
-            "Adult",
-            true
-            );
+        if (_hazardCounter != null && hazardList != null ) 
+        { 
+            _hazardCounter.text = hazardList.Count.ToString();
+        }
     }
 
     public void AddVictim(ulong objectid, float prio, string notes, string age, bool hasPulse)
@@ -70,9 +44,9 @@ public class SceneData : NetworkBehaviour
         //GameObject derp = GetNetworkObject(location.NetworkObjectId).gameObject;
 
 
-        GameObject VictimLocaton = GetNetworkObject(objectid).gameObject;
+        GameObject Locaton = GetNetworkObject(objectid).gameObject;
 
-        Victim new_victim = VictimLocaton.AddComponent<Victim>();
+        Victim new_victim = Locaton.AddComponent<Victim>();
 
         new_victim.priority = priority;
         new_victim.notes = notes;
@@ -80,6 +54,31 @@ public class SceneData : NetworkBehaviour
         new_victim.hasPulse = hasPulse;
 
         victimList.Add(new_victim);
+    }
+
+
+    public void AddHazard(ulong objectid, float prio, string type)
+    {
+        AddHazardServerRPC(objectid, prio,type);
+    }
+
+
+    [ServerRpc(RequireOwnership = false)]
+    private void AddHazardServerRPC(ulong objectid, float prio, string type, ServerRpcParams serverRpcParams = default)
+    {
+        AddHazardClientRPC(objectid, prio, type);
+    }
+
+    [ClientRpc]
+    private void AddHazardClientRPC(ulong objectid, float prio, string type)
+    {
+        GameObject Locaton = GetNetworkObject(objectid).gameObject;
+
+        Hazard new_Hazard = Locaton.AddComponent<Hazard>();
+        new_Hazard.prio = prio;
+        new_Hazard.type = type;
+
+        hazardList.Add(new_Hazard);
     }
 
 }
@@ -107,13 +106,13 @@ public class Victim : MonoBehaviour
 }
 
 
-public class Hazzard : MonoBehaviour
+public class Hazard : MonoBehaviour
 {
     public string type ;
     public float prio;
 
 
-    public Hazzard(string type, float prio)
+    public Hazard(string type, float prio)
     {
         this.type = type;
         this.prio = prio;
