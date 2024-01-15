@@ -13,7 +13,6 @@ public class SelectedState : StateMachineBehaviour
     public RectTransform uiElementprefab;
   
     private GameObject toolbar;
-    private LayerMask _targetLayer; 
 
     private bool requestChange;
 
@@ -21,9 +20,6 @@ public class SelectedState : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         requestChange = false;
-
-        _targetLayer = LayerMask.GetMask("Surface");
-
 
         selectionTracker = GameObject.FindGameObjectWithTag("SelectionTracker").GetComponent<SelectionTracker>();
 
@@ -46,7 +42,7 @@ public class SelectedState : StateMachineBehaviour
         if (Input.GetMouseButtonDown(0))
         {
              
-            if(clickedOther())
+            if(ClickedOther())
             {
                 requestChange = true;
             }
@@ -64,7 +60,7 @@ public class SelectedState : StateMachineBehaviour
         CanvasHandeler.instance.toolbar.SetActive(false);
     }
 
-    private bool clickedOther()
+    private bool ClickedOther()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;

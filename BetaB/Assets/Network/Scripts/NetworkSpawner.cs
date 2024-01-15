@@ -7,7 +7,7 @@ public class NetworkSpawner : NetworkBehaviour
 {
     public GameObject networkPrefab; 
 
-    public enum spawnTypes
+    public enum SpawnTypes
     {
         Empy,
         Victim,
@@ -16,16 +16,16 @@ public class NetworkSpawner : NetworkBehaviour
 
 
     [ServerRpc(RequireOwnership = false)]
-    public void RequestSpawnServerRpc( Vector3 pos,Quaternion rot, spawnTypes type,  ServerRpcParams serverRpcParams = default)
+    public void RequestSpawnServerRpc( Vector3 pos,Quaternion rot, SpawnTypes type,  ServerRpcParams serverRpcParams = default)
     {
         GameObject obj = Instantiate(networkPrefab, pos, rot);
         obj.GetComponent<NetworkObject>().Spawn();
 
         switch (type)
         { 
-            case spawnTypes.Empy:
+            case SpawnTypes.Empy:
                 break; 
-            case spawnTypes.Victim:
+            case SpawnTypes.Victim:
                 // add victim 
                 CanvasHandeler.instance.sceneData.AddVictim(
                     obj.GetComponent<NetworkObject>().NetworkObjectId,
@@ -36,11 +36,11 @@ public class NetworkSpawner : NetworkBehaviour
                     );
                 break;
 
-           case spawnTypes.Hazard:
+           case SpawnTypes.Hazard:
                 CanvasHandeler.instance.sceneData.AddHazard(
                     obj.GetComponent<NetworkObject>().NetworkObjectId,
                     60f,
-                    "Fire!"
+                    Hazard.HazardTypes.Fire
                     );
                 break; 
 

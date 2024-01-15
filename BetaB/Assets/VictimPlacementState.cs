@@ -53,7 +53,7 @@ public class VictimPlacementState : StateMachineBehaviour
                     else
                     {
                         Debug.Log("spawn new object and add victim to that object");
-                        spawner.GetComponent<NetworkSpawner>().RequestSpawnServerRpc(hit.point, Quaternion.identity, NetworkSpawner.spawnTypes.Victim);
+                        spawner.GetComponent<NetworkSpawner>().RequestSpawnServerRpc(hit.point, Quaternion.identity, NetworkSpawner.SpawnTypes.Victim);
                     }
                 }
                 Destroy(selectionTracker.Selection.gameObject);

@@ -69,7 +69,7 @@ public class InventoryButton : MonoBehaviour, IPointerDownHandler, IDragHandler,
             if (Input.GetMouseButtonDown(0))
             {
                 _rotating = false;
-                _networkSpawner.RequestSpawnServerRpc(_selected.transform.position, _selected.transform.rotation, NetworkSpawner.spawnTypes.Empy);
+                _networkSpawner.RequestSpawnServerRpc(_selected.transform.position, _selected.transform.rotation, NetworkSpawner.SpawnTypes.Empy);
                 Destroy(_selected);
                 _selected = null;
             }

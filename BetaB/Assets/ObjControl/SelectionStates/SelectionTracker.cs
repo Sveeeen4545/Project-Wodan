@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SelectionTracker : MonoBehaviour
 {
+    public GameObject[] HazardEffects = new GameObject[5];
 
     public GameObject dropperPrefab; 
     private SceneObjControl _selection;

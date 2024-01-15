@@ -5,6 +5,7 @@ using Unity.Netcode;
 using TMPro;
 using Unity.Collections;
 using JetBrains.Annotations;
+using static Hazard;
 
 public class SceneData : NetworkBehaviour
 {
@@ -57,20 +58,20 @@ public class SceneData : NetworkBehaviour
     }
 
 
-    public void AddHazard(ulong objectid, float prio, string type)
+    public void AddHazard(ulong objectid, float prio, HazardTypes type)
     {
         AddHazardServerRPC(objectid, prio,type);
     }
 
 
     [ServerRpc(RequireOwnership = false)]
-    private void AddHazardServerRPC(ulong objectid, float prio, string type, ServerRpcParams serverRpcParams = default)
+    private void AddHazardServerRPC(ulong objectid, float prio, HazardTypes type, ServerRpcParams serverRpcParams = default)
     {
         AddHazardClientRPC(objectid, prio, type);
     }
 
     [ClientRpc]
-    private void AddHazardClientRPC(ulong objectid, float prio, string type)
+    private void AddHazardClientRPC(ulong objectid, float prio, HazardTypes type)
     {
         GameObject Locaton = GetNetworkObject(objectid).gameObject;
 
@@ -108,11 +109,19 @@ public class Victim : MonoBehaviour
 
 public class Hazard : MonoBehaviour
 {
-    public string type ;
+    public enum HazardTypes
+    {
+        Fire,
+        Eletric,
+        Water,
+        Chemical, 
+        Smoke
+    }
+
+    public HazardTypes type ;
     public float prio;
 
-
-    public Hazard(string type, float prio)
+    public Hazard(HazardTypes type, float prio)
     {
         this.type = type;
         this.prio = prio;

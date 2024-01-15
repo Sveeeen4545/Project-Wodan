@@ -45,13 +45,13 @@ public class HazardPlacementState : StateMachineBehaviour
                     CanvasHandeler.instance.sceneData.AddHazard(
                         hit.collider.gameObject.GetComponent<NetworkObject>().NetworkObjectId,
                         60f,
-                        "Fire!"
+                        Hazard.HazardTypes.Eletric
                         );
                     }
                     else
                     {
                         Debug.Log("spawn new object and add Hazard to that object");
-                        spawner.GetComponent<NetworkSpawner>().RequestSpawnServerRpc(hit.point, Quaternion.identity, NetworkSpawner.spawnTypes.Hazard);
+                        spawner.GetComponent<NetworkSpawner>().RequestSpawnServerRpc(hit.point, Quaternion.identity, NetworkSpawner.SpawnTypes.Hazard);
                     }
                 }
                 Destroy(selectionTracker.Selection.gameObject);
