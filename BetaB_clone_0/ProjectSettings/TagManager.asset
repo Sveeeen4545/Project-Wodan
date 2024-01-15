@@ -7,6 +7,7 @@ TagManager:
   - Selectable
   - Delete
   - SelectionTracker
+  - VictimSpawner
   layers:
   - Default
   - TransparentFX
