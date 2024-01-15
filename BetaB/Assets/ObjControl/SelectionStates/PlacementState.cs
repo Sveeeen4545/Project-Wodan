@@ -4,33 +4,60 @@ using UnityEngine;
 
 public class PlacementState : StateMachineBehaviour
 {
-    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    private SelectionTracker selectionTracker;
+    private SceneObjControl sceneObjControl;
+    private LayerMask _targetLayer;
+    private bool _rotating;
 
-    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        selectionTracker = GameObject.FindGameObjectWithTag("SelectionTracker").GetComponent<SelectionTracker>();
+        sceneObjControl = Instantiate(selectionTracker.Selection);
+        _targetLayer = LayerMask.GetMask("Surface");
+        _rotating = false;
+    }
 
-    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 500, _targetLayer))
+        {
+            if (Input.GetMouseButtonDown(1) && sceneObjControl != null)
+            {
+                _rotating = false;
+                Destroy(sceneObjControl.gameObject);
+                animator.SetInteger("SelectionState", 0);
+                return;
+            }
 
-    // OnStateMove is called right after Animator.OnAnimatorMove()
-    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that processes and affects root motion
-    //}
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (!_rotating)
+                {
+                    _rotating = true;
+                }
+                else {
+                    Quaternion rot = sceneObjControl.transform.rotation;
+                    Vector3 pos = sceneObjControl.transform.position;
+                    Destroy(sceneObjControl.gameObject);
+                    selectionTracker.RequestSpawnServerRpc(pos, rot);
 
-    // OnStateIK is called right after Animator.OnAnimatorIK()
-    //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that sets up animation IK (inverse kinematics)
-    //}
+                    animator.SetInteger("SelectionState", 0);
+                    return;
+                }
+            }
+
+            if (sceneObjControl != null && !_rotating)
+            {
+                sceneObjControl.transform.position = hit.point;
+            }
+            else if (_rotating && sceneObjControl != null)
+            {
+                sceneObjControl.transform.LookAt(hit.point);
+            }
+        }
+    }
+
+
 }

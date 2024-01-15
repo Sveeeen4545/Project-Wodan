@@ -9,8 +9,8 @@ public class SelectedState : StateMachineBehaviour
     private SelectionTracker selectionTracker;
     private SceneObjControl sceneObjControl;
 
-    public GameObject buttonParent;
-    public RectTransform uiElementprefab;
+    //public GameObject buttonParent;
+    //public RectTransform uiElementprefab;
   
     private GameObject toolbar;
 
@@ -20,16 +20,11 @@ public class SelectedState : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         requestChange = false;
-
         selectionTracker = GameObject.FindGameObjectWithTag("SelectionTracker").GetComponent<SelectionTracker>();
-
         sceneObjControl = selectionTracker.Selection;
 
         toolbar = CanvasHandeler.instance.toolbar;
         toolbar.SetActive(true);
-
-
-
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

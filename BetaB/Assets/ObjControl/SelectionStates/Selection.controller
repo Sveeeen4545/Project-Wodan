@@ -41,32 +41,32 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1300359912634504538}
-    m_Position: {x: 160, y: 140, z: 0}
+    m_Position: {x: 160, y: 130, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4484219325878604785}
-    m_Position: {x: 160, y: 240, z: 0}
+    m_Position: {x: 450, y: 130, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -9094276094622618362}
-    m_Position: {x: 160, y: -10, z: 0}
+    m_Position: {x: 160, y: 60, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4744690089049577572}
-    m_Position: {x: 160, y: -90, z: 0}
+    m_Position: {x: 60, y: -20, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7330988644575902966}
-    m_Position: {x: 530, y: -10, z: 0}
+    m_Position: {x: 280, y: -20, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -812224740503651597}
-    m_Position: {x: -130, y: 140, z: 0}
+    m_Position: {x: -140, y: 130, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3259227724323705983}
-    m_Position: {x: -130, y: 220, z: 0}
+    m_Position: {x: 160, y: 200, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: -120, y: -180, z: 0}
-  m_EntryPosition: {x: 350, y: 80, z: 0}
+  m_AnyStatePosition: {x: 170, y: -210, z: 0}
+  m_EntryPosition: {x: 180, y: 130, z: 0}
   m_ExitPosition: {x: 780, y: 360, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 1300359912634504538}
@@ -484,8 +484,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42bcc33eb0e1a854bb28ffba81358dc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonParent: {fileID: 0}
-  uiElementprefab: {fileID: 0}
 --- !u!1102 &3259227724323705983
 AnimatorState:
   serializedVersion: 6

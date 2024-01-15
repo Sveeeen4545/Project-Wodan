@@ -6,33 +6,43 @@ using UnityEngine.Device;
 
 public class NetworkButtons : MonoBehaviour
 {
-    void OnGUI()
+    public void SetNetworkType(bool isHost)
     {
-        float screenWidth = UnityEngine.Screen.width;
-        float screenHeight = UnityEngine.Screen.height;
-        float buttonWidth = 500f;
-        float buttonHeight = 100f;
+        if (isHost) { NetworkManager.Singleton.StartHost(); }
+        else { NetworkManager.Singleton.StartClient(); }
 
-        float centerX = (screenWidth - buttonWidth) / 2;
-        float centerY = (screenHeight - buttonHeight * 2) / 2;
-
-        GUILayout.BeginArea(new Rect(centerX, centerY, buttonWidth, buttonHeight * 2));
-
-        GUIStyle NetworkButton = new GUIStyle(GUI.skin.button);
-        NetworkButton.fontSize = 60;
-
-        if (!NetworkManager.Singleton.IsClient && !NetworkManager.Singleton.IsServer)
-        {
-            if (GUILayout.Button("Control Room", NetworkButton, GUILayout.Height(buttonHeight)))
-            {
-                NetworkManager.Singleton.StartHost();
-            }
-            if (GUILayout.Button("Responder", NetworkButton, GUILayout.Height(buttonHeight)))
-            {
-                NetworkManager.Singleton.StartClient();
-            }
-        }
-
-        GUILayout.EndArea();
     }
+
+
+
+
+    //void OnGUI()
+    //{
+    //    float screenWidth = UnityEngine.Screen.width;
+    //    float screenHeight = UnityEngine.Screen.height;
+    //    float buttonWidth = 500f;
+    //    float buttonHeight = 100f;
+
+    //    float centerX = (screenWidth - buttonWidth) / 2;
+    //    float centerY = (screenHeight - buttonHeight * 2) / 2;
+
+    //    GUILayout.BeginArea(new Rect(centerX, centerY, buttonWidth, buttonHeight * 2));
+
+    //    GUIStyle NetworkButton = new GUIStyle(GUI.skin.button);
+    //    NetworkButton.fontSize = 60;
+
+    //    if (!NetworkManager.Singleton.IsClient && !NetworkManager.Singleton.IsServer)
+    //    {
+    //        if (GUILayout.Button("Control Room", NetworkButton, GUILayout.Height(buttonHeight)))
+    //        {
+    //            NetworkManager.Singleton.StartHost();
+    //        }
+    //        if (GUILayout.Button("Responder", NetworkButton, GUILayout.Height(buttonHeight)))
+    //        {
+    //            NetworkManager.Singleton.StartClient();
+    //        }
+    //    }
+
+    //    GUILayout.EndArea();
+    //}
 }

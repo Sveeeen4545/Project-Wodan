@@ -11,6 +11,7 @@ public class EmptyState : StateMachineBehaviour
     {
         selectionTracker = GameObject.FindGameObjectWithTag("SelectionTracker").GetComponent<SelectionTracker>();
         selectionTracker.SetSelection(null);
+        CanvasHandeler.instance.inventory.SetActive(true);
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -28,5 +29,11 @@ public class EmptyState : StateMachineBehaviour
                 }
             }
         }
+    }
+
+    public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        CanvasHandeler.instance.inventory.SetActive(false);
+
     }
 }

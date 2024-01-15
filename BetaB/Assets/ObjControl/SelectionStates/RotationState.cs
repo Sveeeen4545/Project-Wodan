@@ -17,6 +17,9 @@ public class RotationState : StateMachineBehaviour
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if (animator.GetInteger("SelectionState") != 4) { return; }
+
+
         if (Input.GetMouseButtonDown(0))
         {
             animator.SetInteger("SelectionState", 1);

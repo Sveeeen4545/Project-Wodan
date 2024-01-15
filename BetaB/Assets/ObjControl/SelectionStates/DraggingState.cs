@@ -18,6 +18,9 @@ public class DraggingState : StateMachineBehaviour
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+
+        if (animator.GetInteger("SelectionState") != 2) { return; }
+
         if (Input.GetMouseButtonDown(0))
         {
             animator.SetInteger("SelectionState", 1);

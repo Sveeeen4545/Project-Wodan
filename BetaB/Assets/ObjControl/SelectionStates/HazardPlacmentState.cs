@@ -11,7 +11,6 @@ public class HazardPlacementState : StateMachineBehaviour
     private LayerMask _targetLayer;
     [SerializeField] private NetworkSpawner spawner;
 
-    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         spawner = GameObject.FindGameObjectWithTag("VictimSpawner").GetComponent<NetworkSpawner>();
@@ -21,6 +20,7 @@ public class HazardPlacementState : StateMachineBehaviour
         dropper = Instantiate(selectionTracker.dropperPrefab).GetComponent<SceneObjControl>();
 
         selectionTracker.SetSelection(dropper);
+
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -40,7 +40,6 @@ public class HazardPlacementState : StateMachineBehaviour
 
                     if (hit.collider.GetComponent<SceneObjControl>() != null)
                     {
-
                     Debug.Log("add Hazard to this object");
                     CanvasHandeler.instance.sceneData.AddHazard(
                         hit.collider.gameObject.GetComponent<NetworkObject>().NetworkObjectId,
@@ -58,24 +57,5 @@ public class HazardPlacementState : StateMachineBehaviour
                 selectionTracker.SetState(0);
             }
         }
-
     }
-
-    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-
-    }
-
-    // OnStateMove is called right after Animator.OnAnimatorMove()
-    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that processes and affects root motion
-    //}
-
-    // OnStateIK is called right after Animator.OnAnimatorIK()
-    //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that sets up animation IK (inverse kinematics)
-    //}
 }

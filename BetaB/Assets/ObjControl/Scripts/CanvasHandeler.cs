@@ -6,14 +6,13 @@ public class CanvasHandeler : MonoBehaviour
 {
     public static CanvasHandeler instance;
     
-
-
     private void Awake()
     {
         if (instance == null)
             instance = this;
     }
 
-    public GameObject toolbar;
+    public GameObject toolbar, inventory, dropdowns, networkSelection;
+
     public SceneData sceneData;
 }

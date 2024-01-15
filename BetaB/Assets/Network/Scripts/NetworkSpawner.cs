@@ -25,6 +25,7 @@ public class NetworkSpawner : NetworkBehaviour
         { 
             case SpawnTypes.Empy:
                 break; 
+
             case SpawnTypes.Victim:
                 // add victim 
                 CanvasHandeler.instance.sceneData.AddVictim(
@@ -46,7 +47,6 @@ public class NetworkSpawner : NetworkBehaviour
 
             default: Debug.Log("ERROR: unknown type");
                 break; 
-
         }
     }
 }
