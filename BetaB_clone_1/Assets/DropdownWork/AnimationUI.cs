@@ -8,7 +8,7 @@ public class AnimationUI : MonoBehaviour
 {
     [SerializeField] GameObject panel;
     [SerializeField] bool isOpen;
-    [SerializeField] GameObject content;
+    [SerializeField] GameObject contentToEnable;
 
     [SerializeField] GameObject openIcon, closeIcon;
 
@@ -30,7 +30,7 @@ public class AnimationUI : MonoBehaviour
     {
         if (!isOpen)
         {
-            content.SetActive(true);
+            contentToEnable.SetActive(true);
         }
     }
 
@@ -44,7 +44,7 @@ public class AnimationUI : MonoBehaviour
     {
         if (isOpen)
         {
-            content.SetActive(false);
+            contentToEnable.SetActive(false);
             
             closeIcon.SetActive(false);
             openIcon.SetActive(true);
