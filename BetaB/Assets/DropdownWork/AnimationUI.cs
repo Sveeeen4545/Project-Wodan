@@ -28,7 +28,7 @@ public class AnimationUI : MonoBehaviour
 
     private void SetContentActive()
     {
-        if (!isOpen)
+        if (!isOpen && contentToEnable != null)
         {
             contentToEnable.SetActive(true);
         }
@@ -44,8 +44,12 @@ public class AnimationUI : MonoBehaviour
     {
         if (isOpen)
         {
-            contentToEnable.SetActive(false);
-            
+            if (contentToEnable != null)
+            {
+                contentToEnable.SetActive(false);
+
+            }
+
             closeIcon.SetActive(false);
             openIcon.SetActive(true);
         }
