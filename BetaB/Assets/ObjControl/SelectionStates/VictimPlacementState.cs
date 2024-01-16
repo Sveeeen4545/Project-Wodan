@@ -12,8 +12,9 @@ public class VictimPlacementState : StateMachineBehaviour
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        spawner = GameObject.FindGameObjectWithTag("VictimSpawner").GetComponent<NetworkSpawner>();
         selectionTracker = GameObject.FindGameObjectWithTag("SelectionTracker").GetComponent<SelectionTracker>();
+        spawner = selectionTracker.GetComponent<NetworkSpawner>();
+
         _targetLayer = LayerMask.GetMask("Surface");
 
          dropper = Instantiate(selectionTracker.dropperPrefab).GetComponent<SceneObjControl>();

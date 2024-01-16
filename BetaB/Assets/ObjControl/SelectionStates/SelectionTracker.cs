@@ -8,7 +8,7 @@ public class SelectionTracker : MonoBehaviour
 {
     public GameObject[] HazardEffects = new GameObject[5];
 
-    public List<GameObject> Spawns = new List<GameObject>();
+    //public List<GameObject> Spawns = new List<GameObject>();
 
 
     public GameObject dropperPrefab;
@@ -16,7 +16,7 @@ public class SelectionTracker : MonoBehaviour
 
     private Animator animator;
 
-    private int networkindex;
+    public NetworkSpawner.SpawnTypes spawntype;
 
     public SceneObjControl Selection
     {
@@ -38,9 +38,19 @@ public class SelectionTracker : MonoBehaviour
         animator.SetInteger("SelectionState", state);
     }
 
-    public void SetNetworkIndex(int index)
+    public void SetSpawnIndex(int index)
     {
-        networkindex = index;
+        switch (index)
+        {
+            case 0: spawntype = SpawnTypes.Empy; break;
+            case 1:spawntype = SpawnTypes.Car; break;
+            case 2: spawntype = SpawnTypes.Firetruck; break;
+            default: break;
+
+        }
+
+
+        //spawntype = index;
     }
 
     public void Delete()
@@ -49,12 +59,14 @@ public class SelectionTracker : MonoBehaviour
         animator.SetInteger("SelectionState", 0);
     }
 
-    [ServerRpc(RequireOwnership = false)]
-    public void RequestSpawnServerRpc(Vector3 pos, Quaternion rot , ServerRpcParams serverRpcParams = default)
-    {
-        GameObject obj = Instantiate(Spawns[networkindex] , pos, rot);
-        obj.GetComponent<NetworkObject>().Spawn();
-    }
+    //[ServerRpc(RequireOwnership = false)]
+    //public void RequestSpawnServerRpc(int index, Vector3 pos, Quaternion rot , ServerRpcParams serverRpcParams = default)
+    //{
+
+    //    //Instantiate(Spawns[0], pos, rot).Spawn();
+    //    GameObject obj = Instantiate(Spawns[index] , pos, rot);
+    //    obj.GetComponent<NetworkObject>().Spawn();
+    //}
 
 }
 

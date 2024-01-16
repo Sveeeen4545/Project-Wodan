@@ -9,11 +9,14 @@ public class PlacementState : StateMachineBehaviour
     private LayerMask _targetLayer;
     private bool _rotating;
 
+    private NetworkSpawner _networkSpawner;
+
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         selectionTracker = GameObject.FindGameObjectWithTag("SelectionTracker").GetComponent<SelectionTracker>();
         sceneObjControl = Instantiate(selectionTracker.Selection);
         _targetLayer = LayerMask.GetMask("Surface");
+        _networkSpawner = selectionTracker.GetComponent<NetworkSpawner>();
         _rotating = false;
     }
 
@@ -38,11 +41,8 @@ public class PlacementState : StateMachineBehaviour
                     _rotating = true;
                 }
                 else {
-                    Quaternion rot = sceneObjControl.transform.rotation;
-                    Vector3 pos = sceneObjControl.transform.position;
-                    Destroy(sceneObjControl.gameObject);
-                    selectionTracker.RequestSpawnServerRpc(pos, rot);
 
+                    SpawnObject();
                     animator.SetInteger("SelectionState", 0);
                     return;
                 }
@@ -59,5 +59,13 @@ public class PlacementState : StateMachineBehaviour
         }
     }
 
+
+    private void SpawnObject()
+    {
+        Quaternion rot = sceneObjControl.transform.rotation;
+        Vector3 pos = sceneObjControl.transform.position;
+        Destroy(sceneObjControl.gameObject);
+        _networkSpawner.RequestSpawnServerRpc(pos, rot, selectionTracker.spawntype);
+    }
 
 }

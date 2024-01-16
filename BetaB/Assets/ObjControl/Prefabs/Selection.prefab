@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3380894454604480435}
   - component: {fileID: 2005524913638004334}
   - component: {fileID: 8450160459536997654}
+  - component: {fileID: 8919334226437711402}
+  - component: {fileID: 2701634353003853236}
   m_Layer: 0
   m_Name: Selection
   m_TagString: SelectionTracker
@@ -66,3 +68,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab67c181692ebbb49b61e2d21482e79d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HazardEffects:
+  - {fileID: 7143135204139946907, guid: 42de4d4ef05118c4b980a390483a9bc8, type: 3}
+  - {fileID: 2759232480289680966, guid: 9678c133a4a61af48a99c7bcca8c1c3b, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  dropperPrefab: {fileID: 3743404811350005185, guid: 4dfcccab10b32d5439ca2bac85ca310f,
+    type: 3}
+  spawntype: 0
+--- !u!114 &8919334226437711402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539778719714894542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 951099334
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+--- !u!114 &2701634353003853236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539778719714894542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b282aa79fdaa8f4daab8a946cb11ec6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  networkPrefab:
+  - {fileID: 2954360101055701224, guid: 36926768ebb702d458c03a9ae91ea81d, type: 3}
+  - {fileID: 3206568471319896981, guid: 6f04db0a93f173f4b9dfbc9bc6abeb31, type: 3}
+  - {fileID: 3206568471319896981, guid: d64ec5d4615f8a64fbb1c523dd0d74bb, type: 3}
