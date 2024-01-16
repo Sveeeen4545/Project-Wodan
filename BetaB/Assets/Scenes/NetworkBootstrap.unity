@@ -465,8 +465,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   victimList: []
   hazardList: []
-  _victimCounter: {fileID: 1163123022}
-  _hazardCounter: {fileID: 692072852}
+  _victimCounter: {fileID: 0}
+  _hazardCounter: {fileID: 0}
 --- !u!114 &294199834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -742,18 +742,6 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
---- !u!114 &692072852 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6706440216242650030, guid: c57dd5807a8318d45a6de58c2b0af2ea,
-    type: 3}
-  m_PrefabInstance: {fileID: 5818205129312115534}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &694640186
 GameObject:
   m_ObjectHideFlags: 0
@@ -978,18 +966,6 @@ Transform:
   - {fileID: 832575519}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1163123022 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8523579542656913416, guid: c57dd5807a8318d45a6de58c2b0af2ea,
-    type: 3}
-  m_PrefabInstance: {fileID: 5818205129312115534}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1266802036
 GameObject:
   m_ObjectHideFlags: 0
@@ -2069,7 +2045,8 @@ PrefabInstance:
       value: DropDownMenus
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8369967057267836835, guid: c57dd5807a8318d45a6de58c2b0af2ea, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5910759611878215807, guid: c57dd5807a8318d45a6de58c2b0af2ea,
@@ -2121,7 +2098,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   victimList: []
   hazardList: []
-  _victimCounter: {fileID: 1163123022}
+  _victimCounter: {fileID: 0}
   _hazardCounter: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

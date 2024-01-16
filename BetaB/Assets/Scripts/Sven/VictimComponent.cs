@@ -1,18 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class VictimComponent : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private SceneData data;
+    private List<Hazard> hazardList;
+    private List<Victim> victimList;
+
+    private void Start()
+    {
+        hazardList = data.hazardList;
+        victimList = data.victimList;
+    }
+
+    public void Testing()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
