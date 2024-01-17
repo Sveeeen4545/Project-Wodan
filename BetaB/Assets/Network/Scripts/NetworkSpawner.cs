@@ -3,6 +3,8 @@ using UnityEngine;
 using Unity.Netcode;
 using Unity.Burst.CompilerServices;
 using System.Collections.Generic;
+using static UnityEditor.PlayerSettings;
+using static UnityEngine.Rendering.DebugUI.Table;
 
 public class NetworkSpawner : NetworkBehaviour
 {
@@ -17,7 +19,18 @@ public class NetworkSpawner : NetworkBehaviour
         Victim,
         Hazard,
         Car,
-        Firetruck
+        Firetruck,
+        Broken_Car,
+        Cars_light_multiple,
+        Cars_light_single,
+        Bikes_light,
+        House_blue,
+        House_brown,
+        House_White,
+        Iron_fence,
+        Iron_fence_half,
+        Street_light,
+        Street_light_double
     }
 
 
@@ -59,17 +72,67 @@ public class NetworkSpawner : NetworkBehaviour
                 break;
 
             case SpawnTypes.Car:
-                obj = Instantiate(networkPrefab[1], pos, rot);
-                obj.GetComponent<NetworkObject>().Spawn();
+                SpawnByIndex(1, pos, rot);
                 break;
 
             case SpawnTypes.Firetruck:
-                obj = Instantiate(networkPrefab[2], pos, rot);
-                obj.GetComponent<NetworkObject>().Spawn();
+                SpawnByIndex(2, pos, rot);
+                break;
+
+            case SpawnTypes.Broken_Car:
+                SpawnByIndex(3, pos, rot);
+                break;
+
+            case SpawnTypes.Cars_light_multiple:
+                SpawnByIndex(4, pos, rot);
+                break;
+
+            case SpawnTypes.Cars_light_single:
+                SpawnByIndex(5, pos, rot);
+                break;
+
+            case SpawnTypes.Bikes_light:
+                SpawnByIndex(6, pos, rot);
+                break;
+
+            case SpawnTypes.House_blue:
+                SpawnByIndex(7, pos, rot);
+                break;
+
+            case SpawnTypes.House_brown:
+                SpawnByIndex(8, pos, rot);
+                break;
+
+            case SpawnTypes.House_White:
+                SpawnByIndex(9, pos, rot);
+                break;
+
+            case SpawnTypes.Iron_fence:
+                SpawnByIndex(10, pos, rot);
+                break;
+
+            case SpawnTypes.Iron_fence_half:
+                SpawnByIndex(11, pos, rot);
+                break;
+
+            case SpawnTypes.Street_light:
+                SpawnByIndex(12, pos, rot);
+                break;
+
+            case SpawnTypes.Street_light_double:
+                SpawnByIndex(13, pos, rot);
                 break;
 
             default: Debug.Log("ERROR: unknown type");
-                break; 
+                break;
         }
     }
+
+    private void SpawnByIndex(int index, Vector3 pos, Quaternion rot)
+    {
+        obj = Instantiate(networkPrefab[index], pos, rot);
+        obj.GetComponent<NetworkObject>().Spawn();
+    }
+
+
 }

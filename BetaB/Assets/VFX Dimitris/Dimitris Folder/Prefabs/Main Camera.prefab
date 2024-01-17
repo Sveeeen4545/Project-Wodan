@@ -179,11 +179,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ac4ce54e77f0dc48887e3d36a65fc1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensX: 10
-  sensY: 10
+  zoomEnabeled: 0
+  sensX: 1
+  sensY: 0.5
   minY: -90
   maxY: 90
-  spectatorMoveSpeed: 5
+  spectatorMoveSpeed: 20
+  _middlePoint: {fileID: 0}
+  _distanceToTarget: 3
+  _smoothTime: 0.2
+  cameraXrot: 30
+  cameraposition: {fileID: 0}
 --- !u!114 &2363050892553495481
 MonoBehaviour:
   m_ObjectHideFlags: 0
