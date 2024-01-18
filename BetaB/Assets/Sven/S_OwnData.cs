@@ -26,22 +26,22 @@ public class S_OwnData : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        foreach (SceneData victim in victimList)
-        {
-            if (victim != null)
-            {
-                Instantiate(victim);
-            }
-        }
+        //foreach (SceneData victim in victimList)
+        //{
+        //    if (victim != null)
+        //    {
+        //        Instantiate(victim);
+        //    }
+        //}
 
 
 
 
 
 
-        prioText.text = $"Prioroty: {victim.priority}";
-        ageText.text = $"Age: {victim.age}";
-        hasPulseText.text = $"Has Pulse: {victim.hasPulse}";
-        notesText.text = $"Notes: {victim.notes}";
+        //prioText.text = $"Prioroty: {victim.priority}";
+        //ageText.text = $"Age: {victim.age}";
+        //hasPulseText.text = $"Has Pulse: {victim.hasPulse}";
+        //notesText.text = $"Notes: {victim.notes}";
     }
 }

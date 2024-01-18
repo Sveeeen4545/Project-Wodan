@@ -90,6 +90,7 @@ public class CameraController : MonoBehaviour
 
         if (currentState == 1)
         {
+            
             Vector3 desiredPosition = new Vector3(0, 0, 0);
 
             desiredPosition = _target.position - transform.forward * _distanceToTarget;
