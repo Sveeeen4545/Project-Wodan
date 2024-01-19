@@ -31,23 +31,38 @@ public class VictimPlacementState : StateMachineBehaviour
         {
             selectionTracker.Selection.transform.position = hit.point;
 
+
+            if (Input.GetMouseButtonDown(1) && dropper != null)
+            {
+                Destroy(dropper.gameObject);
+                animator.SetInteger("SelectionState", 0);
+                return;
+            }
+
             if (Input.GetMouseButtonDown(0))
             {
+
+
+
                 //Destroy(dropper.gameObject);
                 if (Physics.Raycast(ray, out hit, 500))
                 {
 
                     if(hit.collider.GetComponent<SceneObjControl>() != null)
                     {
+                        CanvasHandeler.instance.inputUI.SetActive(true);
+                        CanvasHandeler.instance.GetComponent<InputUI>().OpenInputUI(hit.collider.gameObject.GetComponent<NetworkObject>().NetworkObjectId); 
 
-                    Debug.Log("add victim to this object");
-                    CanvasHandeler.instance.sceneData.AddVictim(
-                        hit.collider.gameObject.GetComponent<NetworkObject>().NetworkObjectId,
-                        60f,
-                        "This victim was succesfully created by yaboi",
-                        "its so old cuz it took so long",
-                        false
-                        );
+
+
+                        Debug.Log("Open input UI");
+                    //CanvasHandeler.instance.sceneData.AddVictim(
+                    //    hit.collider.gameObject.GetComponent<NetworkObject>().NetworkObjectId,
+                    //    60f,
+                    //    "This victim was succesfully created by yaboi",
+                    //    "its so old cuz it took so long",
+                    //    false
+                    //    );
                     }
                     else
                     {

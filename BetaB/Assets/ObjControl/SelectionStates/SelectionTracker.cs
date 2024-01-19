@@ -45,12 +45,23 @@ public class SelectionTracker : MonoBehaviour
             case 0: spawntype = SpawnTypes.Empy; break;
             case 1:spawntype = SpawnTypes.Car; break;
             case 2: spawntype = SpawnTypes.Firetruck; break;
-            default: break;
+            case 3:spawntype = SpawnTypes.Broken_Car ;break;
+            case 4: spawntype = SpawnTypes.Cars_light_multiple ; break;
+            case 5: spawntype = SpawnTypes.Cars_light_single ; break;
+            case 6: spawntype = SpawnTypes.Bikes_light ; break;
+            case 7: spawntype = SpawnTypes.House_blue ; break;
+            case 8: spawntype = SpawnTypes.House_brown ; break;
+            case 9: spawntype = SpawnTypes.House_White ; break;
+            case 10: spawntype = SpawnTypes.Iron_fence ; break;
+            case 11: spawntype = SpawnTypes.Iron_fence_half ; break;
+            case 12: spawntype = SpawnTypes.Street_light ; break;
+            case 13: spawntype = SpawnTypes.Street_light_double ; break;
+            //case 14: spawntype = SpawnTypes. ; break;
+            //case 15: spawntype = SpawnTypes. ; break;
+            //case 16: spawntype = SpawnTypes. ; break;
+            default: spawntype = SpawnTypes.Empy; break; 
 
         }
-
-
-        //spawntype = index;
     }
 
     public void Delete()

@@ -33,6 +33,14 @@ public class HazardPlacementState : StateMachineBehaviour
         {
             selectionTracker.Selection.transform.position = hit.point;
 
+            if (Input.GetMouseButtonDown(1) && dropper != null)
+            {
+                Destroy(dropper.gameObject);
+                animator.SetInteger("SelectionState", 0);
+                return;
+            }
+
+
             if (Input.GetMouseButtonDown(0))
             {
                 //Destroy(dropper.gameObject);

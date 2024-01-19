@@ -53,9 +53,9 @@ public class NetworkSpawner : NetworkBehaviour
                 CanvasHandeler.instance.sceneData.AddVictim(
                     obj.GetComponent<NetworkObject>().NetworkObjectId,
                     60f,
-                    "This victim was succesfully created by yaboi",
-                    "its so old cuz it took so long",
-                    false
+                    "Stuck and Communicative",
+                    "Adult",
+                    true
                     );
                 break;
 

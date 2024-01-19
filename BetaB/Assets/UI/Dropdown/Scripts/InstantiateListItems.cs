@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class InstantiateListItems : MonoBehaviour
@@ -58,6 +59,8 @@ public class InstantiateListItems : MonoBehaviour
 
                     if (ownData != null)
                     {
+                        ownData.prioText.text = "Prio: " + victim.priority;
+
                         ownData.ageText.text = "age: " + victim.age;
                         ownData.notesText.text ="notes: " + victim.notes;
                         if (victim.hasPulse)
@@ -84,6 +87,7 @@ public class InstantiateListItems : MonoBehaviour
 
                     if (ownData != null)
                     {
+                        ownData.prioText.text = "Prio: " + hazard.prio;
                         ownData.ageText.text = "type: " + hazard.type.ToString();
                         ownData.notesText.text = hazard.prio.ToString();
                         

@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/NetworkBootstrap.unity
     guid: d2fd22c33e7a45e4fa71dfc0ce95657b
+  - enabled: 1
+    path: Assets/Scenes/DemoScene.unity
+    guid: 3183875a6e969b540976def53b74ec4e
   m_configObjects: {}
