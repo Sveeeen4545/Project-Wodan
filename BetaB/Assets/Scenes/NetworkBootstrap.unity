@@ -552,7 +552,7 @@ MonoBehaviour:
   objectiveMarkerTransform: {fileID: 1887613666}
   northMarkerTransform: {fileID: 110834098}
   southMarkerTransform: {fileID: 1424828624}
-  cameraObjectTransform: {fileID: 330585546}
+  cameraObjectTransform: {fileID: 460039804}
   objectiveObjectTransform: {fileID: 193121773}
 --- !u!1001 &315397231
 PrefabInstance:
@@ -694,7 +694,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &330585544
 AudioListener:
   m_ObjectHideFlags: 0
@@ -931,6 +931,95 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
+--- !u!4 &460039804 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 914821606541466314, guid: e92867fb5c4d5264b88cc66a4160db39,
+    type: 3}
+  m_PrefabInstance: {fileID: 487316623}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &487316623
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1024042167}
+    m_Modifications:
+    - target: {fileID: 914821606541466314, guid: e92867fb5c4d5264b88cc66a4160db39,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 18.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 914821606541466314, guid: e92867fb5c4d5264b88cc66a4160db39,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 31.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 914821606541466314, guid: e92867fb5c4d5264b88cc66a4160db39,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 914821606541466314, guid: e92867fb5c4d5264b88cc66a4160db39,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 914821606541466314, guid: e92867fb5c4d5264b88cc66a4160db39,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 914821606541466314, guid: e92867fb5c4d5264b88cc66a4160db39,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 914821606541466314, guid: e92867fb5c4d5264b88cc66a4160db39,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 914821606541466314, guid: e92867fb5c4d5264b88cc66a4160db39,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 914821606541466314, guid: e92867fb5c4d5264b88cc66a4160db39,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 914821606541466314, guid: e92867fb5c4d5264b88cc66a4160db39,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2042442278781891310, guid: e92867fb5c4d5264b88cc66a4160db39,
+        type: 3}
+      propertyPath: sensY
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2042442278781891310, guid: e92867fb5c4d5264b88cc66a4160db39,
+        type: 3}
+      propertyPath: cameraXrot
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2042442278781891310, guid: e92867fb5c4d5264b88cc66a4160db39,
+        type: 3}
+      propertyPath: _middlePoint
+      value: 
+      objectReference: {fileID: 79525570}
+    - target: {fileID: 7218026040411067282, guid: e92867fb5c4d5264b88cc66a4160db39,
+        type: 3}
+      propertyPath: m_Name
+      value: Main Camera (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e92867fb5c4d5264b88cc66a4160db39, type: 3}
 --- !u!1 &496295888
 GameObject:
   m_ObjectHideFlags: 0
@@ -1332,6 +1421,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 460039804}
   - {fileID: 241447170}
   - {fileID: 330585546}
   - {fileID: 410087041}
