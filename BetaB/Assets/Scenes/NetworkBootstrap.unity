@@ -329,7 +329,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 79525566}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -407,6 +407,37 @@ MonoBehaviour:
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
+--- !u!1 &96527636
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 96527637}
+  m_Layer: 0
+  m_Name: Ignore
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &96527637
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 96527636}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -947.9, y: -1023.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1660240110}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &100046570 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8450160459536997654, guid: a157306aa5b7c274eb194a7e97f82d74,
@@ -431,8 +462,10 @@ GameObject:
   - component: {fileID: 200852076}
   - component: {fileID: 200852075}
   - component: {fileID: 200852074}
+  - component: {fileID: 200852079}
+  - component: {fileID: 200852078}
   m_Layer: 5
-  m_Name: CompasCanvas
+  m_Name: CompasRoadCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -522,6 +555,45 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &200852078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200852073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71b595ddc0e35ce4288a59ce1018fd0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  S_SingleLane: {fileID: 2059816071911875079, guid: 2405ca7f817bac74f911217f2dc0a9d0,
+    type: 3}
+  S_DoubleLane: {fileID: 5823912109069913449, guid: 32f1572334a261342b120cd14171bc6c,
+    type: 3}
+  S_CurvedRoad: {fileID: 9164469228196388930, guid: 350fade8c7c9f7941ba8dbb46168204b,
+    type: 3}
+  S_Intersection: {fileID: 6031244180204003041, guid: 33a36e54bcd81a044920b0e3ecebc8e5,
+    type: 3}
+  RoadPanel: {fileID: 1846239685}
+--- !u!114 &200852079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200852073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef1f5a2de5b1298478e207fe0e9c25a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  compassBarTransform: {fileID: 1660240110}
+  objectiveMarkerTransform: {fileID: 802366709}
+  northMarkerTransform: {fileID: 1174852643}
+  southMarkerTransform: {fileID: 1415266219}
+  cameraObjectTransform: {fileID: 330585546}
+  objectiveObjectTransform: {fileID: 96527637}
 --- !u!1 &241447167
 GameObject:
   m_ObjectHideFlags: 0
@@ -1061,7 +1133,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 435598716}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 200852078}
+        m_TargetAssemblyTypeName: S_CreateRoad, Assembly-CSharp
+        m_MethodName: SpawnCurvedRoad
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &435598716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1392,7 +1476,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 637268917}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 200852078}
+        m_TargetAssemblyTypeName: S_CreateRoad, Assembly-CSharp
+        m_MethodName: SpawnSingleLane
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &637268917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1825,7 +1921,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 863512412}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 200852078}
+        m_TargetAssemblyTypeName: S_CreateRoad, Assembly-CSharp
+        m_MethodName: SpawnIntersection
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &863512412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1946,7 +2054,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 914192427}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 200852078}
+        m_TargetAssemblyTypeName: S_CreateRoad, Assembly-CSharp
+        m_MethodName: SpawnDoubleLane
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &914192427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3196,6 +3316,7 @@ RectTransform:
   - {fileID: 802366709}
   - {fileID: 1174852643}
   - {fileID: 1415266219}
+  - {fileID: 96527637}
   m_Father: {fileID: 200852077}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
