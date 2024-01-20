@@ -1,0 +1,19 @@
+
+
+
+OKE READ THSI FUTUTRRE ME 
+
+Add object: 
+
+* Import model 
+* Copy networkmodel
+* Switch model to desired model
+* make prefab 
+* add to network prefabs 
+* NetworkSpawner: Add type to switchstatement! 
+* Selectiontracker: Add type to switch statement (again :'( )
+* Make sure buttons do: 
+	- Selectiontrtacker.Setstate to 6
+	- Selectiontrtacker.SetSpawnIndex: the index from the switch statements (why plural idk ) 
+	- Selectiontrtacker.SetSelection: the prefab 
+* Enjoy!!!!!! 

@@ -30,7 +30,8 @@ public class NetworkSpawner : NetworkBehaviour
         Iron_fence,
         Iron_fence_half,
         Street_light,
-        Street_light_double
+        Street_light_double,
+        Tree
     }
 
 
@@ -121,6 +122,9 @@ public class NetworkSpawner : NetworkBehaviour
 
             case SpawnTypes.Street_light_double:
                 SpawnByIndex(13, pos, rot);
+                break;
+            case SpawnTypes.Tree:
+                SpawnByIndex(14, pos, rot);
                 break;
 
             default: Debug.Log("ERROR: unknown type");

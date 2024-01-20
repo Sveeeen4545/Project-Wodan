@@ -12,7 +12,7 @@ public class CanvasHandeler : MonoBehaviour
             instance = this;
     }
 
-    public GameObject toolbar, inventory, dropdowns, networkSelection, inputUI;
+    public GameObject toolbar, inventory, dropdowns, networkSelection, inputUI, colourWheel;
 
     public SceneData sceneData;
 }

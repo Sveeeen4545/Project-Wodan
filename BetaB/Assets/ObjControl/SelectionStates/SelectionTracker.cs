@@ -56,7 +56,7 @@ public class SelectionTracker : MonoBehaviour
             case 11: spawntype = SpawnTypes.Iron_fence_half ; break;
             case 12: spawntype = SpawnTypes.Street_light ; break;
             case 13: spawntype = SpawnTypes.Street_light_double ; break;
-            //case 14: spawntype = SpawnTypes. ; break;
+            case 14: spawntype = SpawnTypes.Tree ; break;
             //case 15: spawntype = SpawnTypes. ; break;
             //case 16: spawntype = SpawnTypes. ; break;
             default: spawntype = SpawnTypes.Empy; break; 
