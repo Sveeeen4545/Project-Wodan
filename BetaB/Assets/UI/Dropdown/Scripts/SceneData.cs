@@ -42,9 +42,6 @@ public class SceneData : NetworkBehaviour
     [ClientRpc]
     private void AddVictimClientRPC(ulong objectid, float priority, string notes, string age, bool hasPulse)
     {
-        //GameObject derp = GetNetworkObject(location.NetworkObjectId).gameObject;
-
-
         GameObject Locaton = GetNetworkObject(objectid).gameObject;
 
         Victim new_victim = Locaton.AddComponent<Victim>();

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.PlayerSettings;
 
 public class SetColor : NetworkBehaviour
 {
@@ -13,14 +14,13 @@ public class SetColor : NetworkBehaviour
 
     
 
-
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
 
-        colorwheel = CanvasHandeler.instance.colourWheel; 
+        colorwheel = CanvasHandeler.instance.colourWheel;
 
-
+        if (!IsOwner || (IsServer && !IsOwner)) { return; }
         colorwheel.SetActive(true);
 
         colorwheel.GetComponent<Colourwheel>().setColor = this; 

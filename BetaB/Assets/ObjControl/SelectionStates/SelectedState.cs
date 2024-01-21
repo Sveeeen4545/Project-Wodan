@@ -25,6 +25,11 @@ public class SelectedState : StateMachineBehaviour
 
         toolbar = CanvasHandeler.instance.toolbar;
         toolbar.SetActive(true);
+
+        if ((sceneObjControl.hazards.Length > 0 || sceneObjControl.victims.Length > 0))
+        {
+            CanvasHandeler.instance.inputUI.SetActive(true);
+        }
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -43,16 +48,15 @@ public class SelectedState : StateMachineBehaviour
             }
 
         }
-        if (sceneObjControl !=null)
-        {
-            Vector3 screenPos = Camera.main.WorldToScreenPoint(sceneObjControl.transform.position);
-            toolbar.transform.position = screenPos;
-        }
+        
+        
     }
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         CanvasHandeler.instance.toolbar.SetActive(false);
+        CanvasHandeler.instance.inputUI.SetActive(false);
+
     }
 
     private bool ClickedOther()

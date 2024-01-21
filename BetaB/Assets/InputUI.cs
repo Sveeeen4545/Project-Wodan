@@ -47,9 +47,6 @@ public class InputUI : NetworkBehaviour
 
         CanvasHandeler.instance.sceneData.AddVictim(_objectID, _priority, _notes, _age,_pulse);
         CanvasHandeler.instance.inputUI.SetActive(false);
-
-
-
     }
 
     public void OpenInputUI(ulong objectID)
@@ -59,8 +56,6 @@ public class InputUI : NetworkBehaviour
         _priority = 0;
         _pulse = false;
         _notes = ""; 
-
-
     }
 
 

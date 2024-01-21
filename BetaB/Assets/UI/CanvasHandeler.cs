@@ -12,7 +12,18 @@ public class CanvasHandeler : MonoBehaviour
             instance = this;
     }
 
+
     public GameObject toolbar, inventory, dropdowns, networkSelection, inputUI, colourWheel;
 
     public SceneData sceneData;
+
+
+    [Header("ComponentIcons")]
+    public float IconOffset; 
+    public GameObject VictimIconPrefab;
+
+    public Sprite victimSprite;
+    public Sprite hazardSprite;
+    public Gradient prioGradient;
+    
 }
