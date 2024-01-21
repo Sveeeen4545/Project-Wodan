@@ -51,8 +51,9 @@ public class VictimPlacementState : StateMachineBehaviour
                     if(hit.collider.GetComponent<SceneObjControl>() != null)
                     {
                         CanvasHandeler.instance.inputUI.SetActive(true);
-                        CanvasHandeler.instance.GetComponent<InputUI>().OpenInputUI(hit.collider.gameObject.GetComponent<NetworkObject>().NetworkObjectId); 
+                        CanvasHandeler.instance.GetComponent<InputUI>().OpenInputUI(hit.collider.gameObject.GetComponent<NetworkObject>().NetworkObjectId);
 
+                        animator.SetBool("newVictim", true);
 
 
                         Debug.Log("Open input UI");
@@ -74,5 +75,9 @@ public class VictimPlacementState : StateMachineBehaviour
                 selectionTracker.SetState(0);
             }
         }
+    }
+
+    public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
     }
 }

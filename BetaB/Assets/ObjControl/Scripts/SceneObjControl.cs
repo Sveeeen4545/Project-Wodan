@@ -57,31 +57,13 @@ public class SceneObjControl : NetworkBehaviour
             }
         }
         
-        
-
          index = 0; 
-        //Victim[] victims; 
-        //victims = gameObject.GetComponents<Victim>();
-
-        //Hazard[] hazards; 
-        //hazards = gameObject.GetComponents<Hazard>();
-
+        
          screenPos = Camera.main.WorldToScreenPoint(transform.position);
-
-        //if ((hazards.Length > 0 || victims.Length > 0) && GameObject.FindWithTag("SelectionTracker").GetComponent<SelectionTracker>().Selection == this) 
-        //{
-        //    CanvasHandeler.instance.inputUI.SetActive(true);
-        //}
-        //else if (GameObject.FindWithTag("SelectionTracker").GetComponent<SelectionTracker>().Selection == this)
-        //{
-        //    CanvasHandeler.instance.inputUI.SetActive(false);
-        //}
-
-        
-        
 
         if ( victims != null )
         {
+
             foreach (Victim victim in victims)
             {
                 index++; 

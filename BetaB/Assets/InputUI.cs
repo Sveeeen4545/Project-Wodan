@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
@@ -12,6 +13,14 @@ public class InputUI : NetworkBehaviour
     private bool _pulse;
     private string _age;
     private ulong _objectID;
+    private int _index;
+    private Victim _victim;
+
+    public void isNewVictim(bool isnew)
+    {
+        //_newVictim = isnew;
+    }
+
 
 
     public void SetAge(int Age)
@@ -43,19 +52,50 @@ public class InputUI : NetworkBehaviour
 
     public void ConfirmInput()
     {
-        Debug.Log("add victim to this object");
 
-        CanvasHandeler.instance.sceneData.AddVictim(_objectID, _priority, _notes, _age,_pulse);
+        
+        if (GameObject.FindGameObjectWithTag("SelectionTracker").GetComponent<Animator>().GetBool("newVictim"))
+        {
+            Debug.Log("add victim to this object");
+            CanvasHandeler.instance.sceneData.AddVictim(_objectID, _priority, _notes, _age,_pulse);
+            GameObject.FindGameObjectWithTag("SelectionTracker").GetComponent<Animator>().SetBool("newVictim", false);
+
+        }
+        else
+        {
+            Debug.Log("modify selected");
+            CanvasHandeler.instance.sceneData.ModifyVictim(_objectID, _index, _priority, _notes, _age, _pulse);
+
+        }
         CanvasHandeler.instance.inputUI.SetActive(false);
     }
 
-    public void OpenInputUI(ulong objectID)
+    public void OpenInputUI(ulong objectID, int index = 0)
     {
+        if (index > 0)
+        {
+            _index = index;
+            SceneObjControl Location = GetNetworkObject(objectID).gameObject.GetComponent<SceneObjControl>();
+
+            Victim selectedVictim = Location.victims[index];
+
+            _objectID = objectID;
+            _age = selectedVictim.age;
+            _priority = selectedVictim.priority;
+            _pulse = selectedVictim.hasPulse;
+            _notes = selectedVictim.notes;
+
+            return;
+        }
+
+
         _objectID = objectID;
         _age= "Unknown";
         _priority = 0;
         _pulse = false;
         _notes = ""; 
+
+        
     }
 
 

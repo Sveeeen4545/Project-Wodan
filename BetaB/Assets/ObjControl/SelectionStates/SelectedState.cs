@@ -13,6 +13,7 @@ public class SelectedState : StateMachineBehaviour
     //public RectTransform uiElementprefab;
   
     private GameObject toolbar;
+    private InputUI _inputUI;
 
     private bool requestChange;
 
@@ -24,16 +25,23 @@ public class SelectedState : StateMachineBehaviour
         sceneObjControl = selectionTracker.Selection;
 
         toolbar = CanvasHandeler.instance.toolbar;
+        _inputUI = CanvasHandeler.instance.inputUI.GetComponent<InputUI>();
+
+
         toolbar.SetActive(true);
 
         if ((sceneObjControl.hazards.Length > 0 || sceneObjControl.victims.Length > 0))
-        {
-            CanvasHandeler.instance.inputUI.SetActive(true);
+        {            
+            CanvasHandeler.instance.inputUI.gameObject.SetActive(true);
+            //_inputUI.isNewVictim(true);
         }
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        //.newVictim = false;
+
+
         if (requestChange)
         {
             animator.SetInteger("SelectionState", 0);

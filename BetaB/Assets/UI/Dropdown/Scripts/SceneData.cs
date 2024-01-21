@@ -55,6 +55,37 @@ public class SceneData : NetworkBehaviour
     }
 
 
+    public void ModifyVictim(ulong objectid, int componentIndex, float prio, string notes, string age, bool hasPulse)
+    {
+        ModifyVictimServerRPC(objectid, componentIndex, prio, notes, age, hasPulse);
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void ModifyVictimServerRPC(ulong objectid, int componentIndex, float priority, string notes, string age, bool hasPulse, ServerRpcParams serverRpcParams = default)
+    {
+        ModifyVictimClientRPC(objectid, componentIndex, priority, notes, age, hasPulse);
+    }
+
+
+    [ClientRpc]
+    private void ModifyVictimClientRPC(ulong objectid,int componentIndex, float priority, string notes, string age, bool hasPulse)
+    {
+        SceneObjControl Location = GetNetworkObject(objectid).gameObject.GetComponent<SceneObjControl>();
+
+        Victim selectedVictim = Location.victims[componentIndex];
+
+
+
+        selectedVictim.priority = priority;
+        selectedVictim.notes = notes;
+        selectedVictim.age = age;
+        selectedVictim.hasPulse = hasPulse;
+
+        
+    }
+
+
+
     public void AddHazard(ulong objectid, float prio, HazardTypes type)
     {
         AddHazardServerRPC(objectid, prio,type);
