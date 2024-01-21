@@ -133,21 +133,21 @@ public class SceneObjControl : NetworkBehaviour
                 switch (hazard.type)
                 {
                     case Hazard.HazardTypes.Fire:
-                        if (selectionTracker.HazardEffects[0] != null)
-                        {
-                            Instantiate(selectionTracker.HazardEffects[0], this.transform);
-                        }
-                        break;
-                    case Hazard.HazardTypes.Eletric:
                         if (selectionTracker.HazardEffects[1] != null)
                         {
                             Instantiate(selectionTracker.HazardEffects[1], this.transform);
                         }
                         break;
-                    case Hazard.HazardTypes.Water:
+                    case Hazard.HazardTypes.Eletric:
                         if (selectionTracker.HazardEffects[2] != null)
                         {
                             Instantiate(selectionTracker.HazardEffects[2], this.transform);
+                        }
+                        break;
+                    case Hazard.HazardTypes.Water:
+                        if (selectionTracker.HazardEffects[6] != null)
+                        {
+                            Instantiate(selectionTracker.HazardEffects[6], this.transform);
                         }
                         break;
                     case Hazard.HazardTypes.Smoke:
@@ -162,7 +162,7 @@ public class SceneObjControl : NetworkBehaviour
                             Instantiate(selectionTracker.HazardEffects[4], this.transform);
                         }
                         break;
-                    default: Debug.Log("ERROR unkown type"); break;
+                    default: Instantiate(selectionTracker.HazardEffects[0], this.transform); break;
                 }
 
 

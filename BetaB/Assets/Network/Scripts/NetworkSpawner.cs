@@ -32,7 +32,9 @@ public class NetworkSpawner : NetworkBehaviour
         Street_light,
         Street_light_double,
         Tree,
-        Generator
+        Generator,
+        Spreader,
+        Cutter
     }
 
 
@@ -52,13 +54,8 @@ public class NetworkSpawner : NetworkBehaviour
                 obj = Instantiate(networkPrefab[0], pos, rot);
                 obj.GetComponent<NetworkObject>().Spawn();
 
-                CanvasHandeler.instance.sceneData.AddVictim(
-                    obj.GetComponent<NetworkObject>().NetworkObjectId,
-                    60f,
-                    "Stuck and Communicative",
-                    "Adult",
-                    true
-                    );
+                CanvasHandeler.instance.inputUI.SetActive(true);
+                CanvasHandeler.instance.GetComponent<InputUI>().OpenInputUI(obj.GetComponent<NetworkObject>().NetworkObjectId);
                 break;
 
            case SpawnTypes.Hazard:
@@ -66,11 +63,8 @@ public class NetworkSpawner : NetworkBehaviour
                 obj = Instantiate(networkPrefab[0], pos, rot);
                 obj.GetComponent<NetworkObject>().Spawn();
 
-                CanvasHandeler.instance.sceneData.AddHazard(
-                    obj.GetComponent<NetworkObject>().NetworkObjectId,
-                    60f,
-                    Hazard.HazardTypes.Fire
-                    );
+                CanvasHandeler.instance.inputUIHazard.SetActive(true);
+                CanvasHandeler.instance.GetComponent<InputUIHazard>().OpenInputUI(obj.GetComponent<NetworkObject>().NetworkObjectId);
                 break;
 
             case SpawnTypes.Car:
@@ -129,6 +123,12 @@ public class NetworkSpawner : NetworkBehaviour
                 break;
             case SpawnTypes.Generator:
                 SpawnByIndex(15, pos, rot);
+                break;
+            case SpawnTypes.Spreader:
+                SpawnByIndex(16, pos, rot);
+                break;
+            case SpawnTypes.Cutter:
+                SpawnByIndex(17, pos, rot);
                 break;
 
             default: Debug.Log("ERROR: unknown type");

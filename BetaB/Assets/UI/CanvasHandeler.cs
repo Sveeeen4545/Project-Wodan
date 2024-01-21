@@ -13,7 +13,7 @@ public class CanvasHandeler : MonoBehaviour
     }
 
 
-    public GameObject toolbar, inventory, dropdowns, networkSelection, inputUI, colourWheel;
+    public GameObject toolbar, inventory, dropdowns, networkSelection, inputUI, inputUIHazard, colourWheel;
 
     public SceneData sceneData;
 

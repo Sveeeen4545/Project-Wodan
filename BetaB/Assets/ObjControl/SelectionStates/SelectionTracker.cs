@@ -58,7 +58,9 @@ public class SelectionTracker : MonoBehaviour
             case 13: spawntype = SpawnTypes.Street_light_double ; break;
             case 14: spawntype = SpawnTypes.Tree ; break;
             case 15: spawntype = SpawnTypes.Generator ; break;
-            //case 16: spawntype = SpawnTypes. ; break;
+            case 16: spawntype = SpawnTypes.Spreader ; break;
+            case 17: spawntype = SpawnTypes.Cutter; break;
+
             default: spawntype = SpawnTypes.Empy; break; 
 
         }

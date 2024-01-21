@@ -50,16 +50,17 @@ public class HazardPlacementState : StateMachineBehaviour
                     if (hit.collider.GetComponent<SceneObjControl>() != null)
                     {
                     Debug.Log("add Hazard to this object");
-                    CanvasHandeler.instance.sceneData.AddHazard(
-                        hit.collider.gameObject.GetComponent<NetworkObject>().NetworkObjectId,
-                        60f,
-                        Hazard.HazardTypes.Eletric
-                        );
+                        CanvasHandeler.instance.inputUIHazard.SetActive(true);
+                        CanvasHandeler.instance.GetComponent<InputUIHazard>().OpenInputUI(hit.collider.gameObject.GetComponent<NetworkObject>().NetworkObjectId);
+                        animator.SetBool("newHazard", true);
+
                     }
                     else
                     {
                         Debug.Log("spawn new object and add Hazard to that object");
                         spawner.GetComponent<NetworkSpawner>().RequestSpawnServerRpc(hit.point, Quaternion.identity, NetworkSpawner.SpawnTypes.Hazard);
+                        animator.SetBool("newHazard", true);
+
                     }
                 }
                 Destroy(selectionTracker.Selection.gameObject);

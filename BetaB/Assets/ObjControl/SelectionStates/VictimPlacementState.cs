@@ -57,18 +57,15 @@ public class VictimPlacementState : StateMachineBehaviour
 
 
                         Debug.Log("Open input UI");
-                    //CanvasHandeler.instance.sceneData.AddVictim(
-                    //    hit.collider.gameObject.GetComponent<NetworkObject>().NetworkObjectId,
-                    //    60f,
-                    //    "This victim was succesfully created by yaboi",
-                    //    "its so old cuz it took so long",
-                    //    false
-                    //    );
+                    
                     }
                     else
                     {
                         Debug.Log("spawn new object and add victim to that object");
                         spawner.GetComponent<NetworkSpawner>().RequestSpawnServerRpc(hit.point, Quaternion.identity, NetworkSpawner.SpawnTypes.Victim);
+
+                        animator.SetBool("newVictim", true);
+
                     }
                 }
                 Destroy(selectionTracker.Selection.gameObject);
