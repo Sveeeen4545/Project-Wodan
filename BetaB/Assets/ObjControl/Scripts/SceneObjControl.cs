@@ -102,13 +102,13 @@ public class SceneObjControl : NetworkBehaviour
 
         icon.GetComponent<Image>().color = gradient.Evaluate(normalizedValue);
 
-        if (!CanvasHandeler.instance.toolbar.activeInHierarchy)
+        if (!CanvasHandeler.instance.toolbar.activeInHierarchy && !inputUIactive())
         {
             pos.y = pos.y + 100;
             pos.x = pos.x + (index * CanvasHandeler.instance.IconOffset) - 140;
             icon.transform.position = pos;
         }
-        else if(GameObject.FindWithTag("SelectionTracker").GetComponent<SelectionTracker>().Selection == this)
+        else if(isSelected() && inputUIactive())
         {
             pos.y = pos.y + (index * CanvasHandeler.instance.IconOffset) + 280 ;
             pos.x = pos.x- 240;
@@ -119,6 +119,19 @@ public class SceneObjControl : NetworkBehaviour
         {
             Destroy(icon);
         }
+    }
+
+    private bool inputUIactive()
+    {
+        if (CanvasHandeler.instance.inputUI.activeInHierarchy || CanvasHandeler.instance.inputUIHazard.activeInHierarchy)
+        { return true; }
+        else { return false; }
+    }
+
+
+    private bool isSelected()
+    {
+        return GameObject.FindWithTag("SelectionTracker").GetComponent<SelectionTracker>().Selection == this;
     }
 
     public void tabButton()
