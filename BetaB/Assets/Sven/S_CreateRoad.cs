@@ -17,7 +17,7 @@ public class S_CreateRoad : NetworkBehaviour
     private void Update()
     {
 
-        if (!IsServer || initialized)
+        if (!IsHost || initialized)
         {
             return; 
         }
