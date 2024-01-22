@@ -14,9 +14,9 @@ using UnityEngine;
 using TMPro;
 
 
-#if UNITY_EDITOR
-using ParrelSync;
-#endif
+//#if UNITY_EDITOR
+//using ParrelSync;
+//#endif
 
 public class SimpleMatchmaking : MonoBehaviour
 {
@@ -43,11 +43,11 @@ public class SimpleMatchmaking : MonoBehaviour
     {
         var options = new InitializationOptions();
 
-#if UNITY_EDITOR
-        // Remove this if you don't have ParrelSync installed. 
-        // It's used to differentiate the clients, otherwise lobby will count them as the same
-        options.SetProfile(ClonesManager.IsClone() ? ClonesManager.GetArgument() : "Primary");
-#endif
+//#if UNITY_EDITOR
+//        // Remove this if you don't have ParrelSync installed. 
+//        // It's used to differentiate the clients, otherwise lobby will count them as the same
+//        options.SetProfile(ClonesManager.IsClone() ? ClonesManager.GetArgument() : "Primary");
+//#endif
 
         await UnityServices.InitializeAsync(options);
 
