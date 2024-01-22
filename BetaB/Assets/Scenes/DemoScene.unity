@@ -1716,10 +1716,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 11500000, guid: 5ce3e2bc165129c418527ed2b77680de, type: 3}
-        m_TargetAssemblyTypeName: NetworkButtons, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 6
+      - m_Target: {fileID: 1672635837}
+        m_TargetAssemblyTypeName: SimpleMatchmaking, Assembly-CSharp
+        m_MethodName: CreateOrJoinLobby
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
