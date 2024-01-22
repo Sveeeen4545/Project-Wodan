@@ -1,10 +1,8 @@
 
 using UnityEngine;
 using Unity.Netcode;
-using Unity.Burst.CompilerServices;
 using System.Collections.Generic;
-using static UnityEditor.PlayerSettings;
-using static UnityEngine.Rendering.DebugUI.Table;
+
 
 public class NetworkSpawner : NetworkBehaviour
 {
