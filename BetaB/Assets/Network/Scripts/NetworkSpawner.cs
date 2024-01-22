@@ -49,7 +49,10 @@ public class NetworkSpawner : NetworkBehaviour
 
             case SpawnTypes.Victim:
 
-                obj = Instantiate(networkPrefab[0], pos, rot);
+                obj = Instantiate(networkPrefab[19], pos, rot);
+
+                
+
                 obj.GetComponent<NetworkObject>().Spawn();
 
                 CanvasHandeler.instance.inputUI.SetActive(true);

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
+using static NetworkSpawner;
 
 public class S_CreateRoad : NetworkBehaviour
 {
@@ -27,38 +28,65 @@ public class S_CreateRoad : NetworkBehaviour
     }
 
 
-    public void SpawnSingleLane()
+    public void RequestRoad(int roadType)
     {
-        Instantiate(S_SingleLane).GetComponent<NetworkObject>().Spawn();
         RoadPanel.SetActive(false);
         initialized = true;
         CanvasHandeler.instance.inventory.SetActive(true);
-
+        switch (roadType)
+        {
+            case 0: Instantiate(S_SingleLane).GetComponent<NetworkObject>().Spawn(); break;
+            case 1: Instantiate(S_DoubleLane).GetComponent<NetworkObject>().Spawn(); break;
+            case 2: Instantiate(S_CurvedRoad).GetComponent<NetworkObject>().Spawn(); break;
+            case 3: Instantiate(S_Intersection).GetComponent<NetworkObject>().Spawn(); break;
+            default: Debug.Log("ERROR: unknown roadType"); break;
+        }
     }
-    public void SpawnDoubleLane()
+
+    // oops this was unneccasary 
+    [ServerRpc]
+    public void RequestRoadServerRpc(int roadType, ServerRpcParams serverRpcParams = default)
     {
-        Instantiate (S_DoubleLane).GetComponent<NetworkObject>().Spawn();
-        RoadPanel.SetActive(false);
-        initialized = true;
-        CanvasHandeler.instance.inventory.SetActive(true);
-
-
-
+        switch (roadType)
+        {
+            case 0: Instantiate(S_SingleLane).GetComponent<NetworkObject>().Spawn(); break;
+            case 1: Instantiate(S_DoubleLane).GetComponent<NetworkObject>().Spawn(); break;
+            case 2: Instantiate(S_CurvedRoad).GetComponent<NetworkObject>().Spawn(); break;
+            case 3: Instantiate(S_Intersection).GetComponent<NetworkObject>().Spawn(); break; 
+            default: Debug.Log("ERROR: unknown roadType"); break;
+        }
     }
-    public void SpawnCurvedRoad()
-    {
-        Instantiate(S_CurvedRoad).GetComponent<NetworkObject>().Spawn();
-        RoadPanel.SetActive(false);
-        initialized = true;
-        CanvasHandeler.instance.inventory.SetActive(true);
 
-    }
-    public void SpawnIntersection()
-    {
-        Instantiate(S_Intersection).GetComponent<NetworkObject>().Spawn();
-        RoadPanel.SetActive(false);
-        initialized = true;
-        CanvasHandeler.instance.inventory.SetActive(true);
+    //public void SpawnSingleLane()
+    //{
+    //    Instantiate(S_SingleLane).GetComponent<NetworkObject>().Spawn();
+        
 
-    }
+    //}
+    //public void SpawnDoubleLane()
+    //{
+    //    Instantiate (S_DoubleLane).GetComponent<NetworkObject>().Spawn();
+    //    RoadPanel.SetActive(false);
+    //    initialized = true;
+    //    CanvasHandeler.instance.inventory.SetActive(true);
+
+
+
+    //}
+    //public void SpawnCurvedRoad()
+    //{
+    //    Instantiate(S_CurvedRoad).GetComponent<NetworkObject>().Spawn();
+    //    RoadPanel.SetActive(false);
+    //    initialized = true;
+    //    CanvasHandeler.instance.inventory.SetActive(true);
+
+    //}
+    //public void SpawnIntersection()
+    //{
+    //    Instantiate(S_Intersection).GetComponent<NetworkObject>().Spawn();
+    //    RoadPanel.SetActive(false);
+    //    initialized = true;
+    //    CanvasHandeler.instance.inventory.SetActive(true);
+
+    //}
 }
