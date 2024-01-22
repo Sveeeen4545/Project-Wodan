@@ -19,7 +19,7 @@ public class S_CreateRoad : NetworkBehaviour
 
         if (!IsHost || initialized)
         {
-            //return; 
+            return; 
         }
         RoadPanel.SetActive(true);
         CanvasHandeler.instance.inventory.SetActive(false);
