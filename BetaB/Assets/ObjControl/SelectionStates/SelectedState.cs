@@ -30,7 +30,8 @@ public class SelectedState : StateMachineBehaviour
 
         toolbar.SetActive(true);
 
-        if ((sceneObjControl.hazards.Length > 0 || sceneObjControl.victims.Length > 0))
+        //if ((sceneObjControl.hazards.Length > 0 || sceneObjControl.victims.Length > 0))
+        if (sceneObjControl.victims.Length > 0)
         {            
             CanvasHandeler.instance.inputUI.gameObject.SetActive(true);
             //_inputUI.isNewVictim(true);

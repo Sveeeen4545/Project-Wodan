@@ -22,7 +22,12 @@ public class EmptyState : StateMachineBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 500))
             {
-                if(hit.collider.GetComponent<SceneObjControl>() != null)
+                if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+                {
+                    return;
+                }
+
+                    if (hit.collider.GetComponent<SceneObjControl>() != null)
                 {
                     selectionTracker.SetSelection(hit.collider.GetComponent<SceneObjControl>());
                     animator.SetInteger("SelectionState", 1);

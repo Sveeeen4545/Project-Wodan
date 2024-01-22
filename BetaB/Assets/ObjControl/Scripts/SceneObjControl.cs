@@ -49,15 +49,19 @@ public class SceneObjControl : NetworkBehaviour
 
     private void DisplayComponents()
     {
+
         if (componentIcons.Count > 0) 
         {
             foreach (var item in componentIcons)
             {
                 Destroy(item);
+
             }
+            componentIcons.Clear();
+
         }
-        
-         index = 0; 
+
+        index = 0; 
         
          screenPos = Camera.main.WorldToScreenPoint(transform.position);
 

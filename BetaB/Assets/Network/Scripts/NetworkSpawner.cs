@@ -2,6 +2,7 @@
 using UnityEngine;
 using Unity.Netcode;
 using System.Collections.Generic;
+using System;
 
 
 public class NetworkSpawner : NetworkBehaviour
@@ -36,6 +37,30 @@ public class NetworkSpawner : NetworkBehaviour
     }
 
 
+    [ClientRpc]
+    public void RequestInputUIClientRPC(bool isVictim ,ulong clientID, ulong objectID)
+    {
+        if (clientID != NetworkManager.Singleton.LocalClientId)
+        {
+            Debug.Log("Open UI not here");
+
+            return; 
+        }
+
+        Debug.Log("Open UI here");
+
+        if(isVictim)
+        {
+            CanvasHandeler.instance.inputUI.SetActive(true);
+            CanvasHandeler.instance.GetComponent<InputUI>().OpenInputUI(GetNetworkObject(objectID).GetComponent<NetworkObject>().NetworkObjectId);
+        }
+        else
+        {
+            CanvasHandeler.instance.inputUIHazard.SetActive(true);
+            CanvasHandeler.instance.GetComponent<InputUIHazard>().OpenInputUI(GetNetworkObject(objectID).GetComponent<NetworkObject>().NetworkObjectId);
+        }
+    }
+
     [ServerRpc(RequireOwnership = false)]
     public void RequestSpawnServerRpc( Vector3 pos,Quaternion rot, SpawnTypes type,  ServerRpcParams serverRpcParams = default)
     {
@@ -50,13 +75,12 @@ public class NetworkSpawner : NetworkBehaviour
             case SpawnTypes.Victim:
 
                 obj = Instantiate(networkPrefab[19], pos, rot);
-
-                
-
                 obj.GetComponent<NetworkObject>().Spawn();
 
-                CanvasHandeler.instance.inputUI.SetActive(true);
-                CanvasHandeler.instance.GetComponent<InputUI>().OpenInputUI(obj.GetComponent<NetworkObject>().NetworkObjectId);
+                RequestInputUIClientRPC(true ,serverRpcParams.Receive.SenderClientId, obj.GetComponent<NetworkObject>().NetworkObjectId);
+
+
+                
                 break;
 
            case SpawnTypes.Hazard:
@@ -64,8 +88,8 @@ public class NetworkSpawner : NetworkBehaviour
                 obj = Instantiate(networkPrefab[0], pos, rot);
                 obj.GetComponent<NetworkObject>().Spawn();
 
-                CanvasHandeler.instance.inputUIHazard.SetActive(true);
-                CanvasHandeler.instance.GetComponent<InputUIHazard>().OpenInputUI(obj.GetComponent<NetworkObject>().NetworkObjectId);
+                RequestInputUIClientRPC(false, serverRpcParams.Receive.SenderClientId, obj.GetComponent<NetworkObject>().NetworkObjectId);
+
                 break;
 
             case SpawnTypes.Car:
