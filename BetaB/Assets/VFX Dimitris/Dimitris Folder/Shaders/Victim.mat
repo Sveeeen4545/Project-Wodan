@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Victim
-  m_Shader: {fileID: -6465566751694194690, guid: 07b0450c51458d243839f51e7d33e91e,
+  m_Shader: {fileID: -6465566751694194690, guid: 023e1374a3f03144b8ff854108889fb3,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -134,10 +134,10 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.0754717, g: 0.03583769, b: 0.02947668, a: 1}
+    - _BaseColor: {r: 1, g: 0.4377358, b: 0.4377358, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _NormalSpeed: {r: 0, g: -0.1, b: 0, a: 0}
-    - _RippleColor: {r: 15.165969, g: 4.836194, b: 1.2018304, a: 0}
+    - _RippleColor: {r: 20.247765, g: 2.7539535, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
