@@ -46,7 +46,7 @@ public class SceneData : NetworkBehaviour
 
         Victim new_victim = Locaton.AddComponent<Victim>();
 
-        new_victim.priority = priority;
+        new_victim.priority = Mathf.FloorToInt(priority);
         new_victim.notes = notes;
         new_victim.age = age;
         new_victim.hasPulse = hasPulse;
@@ -76,7 +76,7 @@ public class SceneData : NetworkBehaviour
 
 
 
-        selectedVictim.priority = priority;
+        selectedVictim.priority = Mathf.FloorToInt(priority);
         selectedVictim.notes = notes;
         selectedVictim.age = age;
         selectedVictim.hasPulse = hasPulse;
@@ -104,7 +104,7 @@ public class SceneData : NetworkBehaviour
         GameObject Locaton = GetNetworkObject(objectid).gameObject;
 
         Hazard new_Hazard = Locaton.AddComponent<Hazard>();
-        new_Hazard.prio = prio;
+        new_Hazard.prio = Mathf.FloorToInt(prio);
         new_Hazard.type = type;
 
         hazardList.Add(new_Hazard);

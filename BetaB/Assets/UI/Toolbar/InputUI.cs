@@ -40,9 +40,9 @@ public class InputUI : NetworkBehaviour
         _notes = Notes;
     }
 
-    public void SetPulse()
+    public void SetPulse(bool pulse)
     {
-        _pulse = !_pulse;
+        _pulse = pulse;
     }
 
     public void SetPrio(float Prio)

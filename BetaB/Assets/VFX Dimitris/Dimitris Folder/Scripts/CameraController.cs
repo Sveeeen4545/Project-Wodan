@@ -45,6 +45,10 @@ public class CameraController : MonoBehaviour
     private void LateUpdate()
     {
         CameraZoom();
+
+        if (CanvasHandeler.instance.inputUI.activeInHierarchy || CanvasHandeler.instance.inputUIHazard.activeInHierarchy) { return; }
+        
+        
         CameraPosition();
         CameraRotation();
     }
